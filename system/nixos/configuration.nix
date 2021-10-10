@@ -48,25 +48,39 @@
  networking.hostName = "Silas"; # Define your hostname.
  time.timeZone = "Europe/Amsterdam";
 
-  #networking.useDHCP = true;
   networking = {
+    hostName = "Silas"; # Define your hostname.
     #interfaces.enp0s3.useDHCP = true;
     networkmanager.enable = true;
+    firewall = {
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+    };
   };
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
+  nixpkgs.config.pulseaudio = true;
 
   services.syncthing = {
     enable = true;
     user = "silas";
     dataDir = "/home/silas/Sync";
   }; 
+  services.flatpak.enable = true;
+  #services.pipewire = {
+  #  enable=true;
+  #  alsa.enable=true;
+  #  pulse.enable=true;
+  #  jack.enable=true;
+  #};
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
+    #libinput.enable = false;
+    #synaptics.enable = true;
     desktopManager = {
       xfce = {
         enable = true;
@@ -104,10 +118,18 @@
     partition-manager
     lightspark
     unrar
-    wine
+    openssl
+    (wine.override { wineBuild = "wine64";})
+    cacert
+    # wineWowPackages.stable
   ];
   nixpkgs.config.permittedInsecurePackages = [
   ];
+
+  environment.variables = {
+    #"SSL_CERT_FILE" = "/etc/ssl/certs/ca-bundle.crt";
+    #"CURL_CA_BUNDLE" = "/etc/ssl/certs/ca-certificates.crt";
+  };
 
   users.users.silas = {
     isNormalUser = true;
@@ -118,8 +140,6 @@
   };
   nix.trustedUsers = ["@wheel" "silas"];
 
-
-
   programs.zsh.enable = true;
 
   nix.gc = {
@@ -127,8 +147,6 @@
     options = "--delete-older-than 15d";
   };
 
-  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-  networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";

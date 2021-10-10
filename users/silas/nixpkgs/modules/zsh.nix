@@ -10,16 +10,24 @@
       ls="exa";
       ll="exa -lah";
       cat="bat";
+      e="emacsclient -a '' -c";
+      magit="emacsclient -a '' -c -e '(magit-status)'";
+      ve="$VISUAL";
       nixsys="cd ~/.dotfiles/system/nixos";
       nixhome="cd ~/.dotfiles/users/silas/nixpkgs";
       packages="vim ~/.dotfiles/users/silas/nixpkgs/packages.nix";
       homeswitch="home-manager switch";
       addpkg="vim ~/.dotfiles/users/silas/nixpkgs/packages.nix && home-manager switch";
+      slep="xinput set-prop 13 'Device Enabled' 0 && systemctl suspend";
+      woke="xinput set-prop 13 'Device Enabled' 1 && exit";
+      ij="setsid idea-ultimate . >/dev/null 2>&1";
+      ws="setsid webstorm . >/dev/null 2>&1";
     };
 
     envExtra = ''
-      EDITOR=nvim
-      VISUAL=nvim
+      EDITOR='emacsclient -a "" -c'
+      VISUAL='emacsclient -a "" -c'
+      SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt
     '';
 
     initExtra = ''
@@ -44,6 +52,7 @@
     plugins = [
       "git"
       "sudo"
+      "vi-mode"
     ];
   };
 }

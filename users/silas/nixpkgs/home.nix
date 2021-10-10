@@ -43,6 +43,7 @@
     VISUAL = "nvim";
     TERMINAL = "konsole";
     BROWSER = "brave";
+    JAVA_HOME="$HOME/.nix-profile/lib/openjdk";
   };
   xsession.initExtra = ''
     xdg-settings set default-web-browser brave-browser.desktop

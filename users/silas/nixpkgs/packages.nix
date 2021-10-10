@@ -13,15 +13,21 @@ pkgs: with pkgs; [
     }) {})
 
     #programming
-    openjdk11
+    openjdk11_headless
     jetbrains.idea-ultimate
-    gitAndTools.gitui
-    lazygit
+    jetbrains.webstorm
+    # gitAndTools.gitui
+    # lazygit
     ghc
     cabal-install
     stack
-    haskellPackages.OpenGL
-    haskellPackages.OpenGLRaw
+    # haskellPackages.OpenGL
+    # haskellPackages.OpenGLRaw
+    mariadb
+    nodejs
+    nodePackages.npm
+    nodePackages."@angular/cli"
+    # mysql-workbench
 
     #utility
     ranger
@@ -33,10 +39,17 @@ pkgs: with pkgs; [
     etcher
     ark
     ripgrep
-    youtube-dl
+    # youtube-dl
     kdeconnect
-    plover.dev
+    # plover.dev
     speedcrunch
+    unzip
+    gcc
+    sqlite
+    gnupg
+    appimage-run
+    libpulseaudio
+    sidequest
 
     #finance
     beancount
@@ -54,8 +67,10 @@ pkgs: with pkgs; [
     qbittorrent
 
     #communication
-    unstable.discord-canary
-    unstable.discord
+    #unstable.discord-canary
+    #unstable.discord
+    discord-canary
+    discord
     signal-desktop
     teams
 
@@ -64,4 +79,7 @@ pkgs: with pkgs; [
     mpv
     feh
     aegisub
+    webcamoid
+    peek
+    gimp
   ]

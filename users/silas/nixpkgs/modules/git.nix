@@ -3,8 +3,11 @@
 {
   programs.git = {
     enable=true;
-    userName="Silas de Jong";
-    userEmail="andorthekid@gmail.com";
+    userName="jongs29";
+    extraConfig = {
+      "gitlab"."gitlab.fdmci.hva.nl/api/v4".user ="jongs29";
+    };
+    userEmail="silas.de.jong@hva.nl";
     extraConfig.http.sslVerify=false;
   };
 }

@@ -45,7 +45,6 @@
 
  virtualisation.docker.enable = true;
 
- networking.hostName = "Silas"; # Define your hostname.
  time.timeZone = "Europe/Amsterdam";
 
   networking = {
@@ -76,39 +75,38 @@
   #  jack.enable=true;
   #};
   security.pam.services.gdm.enableGnomeKeyring = true;
+  services.gnome.gnome-keyring.enable = true;
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
     #libinput.enable = false;
     #synaptics.enable = true;
     desktopManager = {
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
+      # xfce = {
+      #   enable = true;
+      #   noDesktop = true;
+      #   enableXfwm = false;
+      # };
       plasma5.enable = true;
       session = [
-        # {
-        #   name = "home-manager";
-        #   start = ''
-        #     ${pkgs.runtimeShell} $HOME/.hm-xsession &
-        #     waitPID=$!
-        #   '';
-        # }
       ];
     };
-    windowManager.xmonad.enable = true;
-    displayManager.defaultSession = "xfce+xmonad";
   };
 
-  # nix.allowedUsers = ["@wheel"];
 
-  programs.steam.enable = true;
+ services.emacs.package = pkgs.emacsUnstable;
+
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
+  programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
-    home-manager
+    #home-manager
     git
     wget 
     vim
@@ -121,6 +119,9 @@
     openssl
     (wine.override { wineBuild = "wine64";})
     cacert
+    steam
+    emacs
+    cmake
     # wineWowPackages.stable
   ];
   nixpkgs.config.permittedInsecurePackages = [

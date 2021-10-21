@@ -63,7 +63,7 @@ pkgs: with pkgs; [
 
     #internet
     brave
-    vieb
+    unstable.vieb
     qbittorrent
 
     #communication

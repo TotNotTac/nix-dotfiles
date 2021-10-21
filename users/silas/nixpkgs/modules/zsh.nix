@@ -11,7 +11,7 @@
       ll="exa -lah";
       cat="bat";
       e="emacsclient -a '' -c";
-      magit="emacsclient -a '' -c -e '(magit-status)'";
+      magit="setsid emacsclient -a '' -c -e '(magit-status)' >/dev/null 2>&1";
       ve="$VISUAL";
       nixsys="cd ~/.dotfiles/system/nixos";
       nixhome="cd ~/.dotfiles/users/silas/nixpkgs";
@@ -22,6 +22,7 @@
       woke="xinput set-prop 13 'Device Enabled' 1 && exit";
       ij="setsid idea-ultimate . >/dev/null 2>&1";
       ws="setsid webstorm . >/dev/null 2>&1";
+      runPlover=", xhost + && sudo plover";
     };
 
     envExtra = ''

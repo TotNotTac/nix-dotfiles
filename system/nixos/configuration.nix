@@ -44,6 +44,8 @@
  };
 
  virtualisation.docker.enable = true;
+ virtualisation.virtualbox.host.enable = true;
+ users.extraGroups.vboxusers.members = [ "@wheel" ];
 
  time.timeZone = "Europe/Amsterdam";
 

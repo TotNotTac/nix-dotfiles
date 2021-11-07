@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/default.nix
+    ./fonts.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

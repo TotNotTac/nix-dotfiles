@@ -9,5 +9,6 @@
     ./xmonad/xmonad.nix
     ./mpv.nix
     ./xresources.nix
+    ./vieb
   ];
 }

@@ -1,6 +1,5 @@
 let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-  
 in
 pkgs: with pkgs; [
     #nix
@@ -21,6 +20,7 @@ pkgs: with pkgs; [
     ghc
     cabal-install
     stack
+    pkg-config
     # haskellPackages.OpenGL
     # haskellPackages.OpenGLRaw
     mariadb
@@ -28,6 +28,9 @@ pkgs: with pkgs; [
     nodePackages.npm
     nodePackages."@angular/cli"
     # mysql-workbench
+    postman
+    makeWrapper
+    rustup
 
     #utility
     ranger
@@ -41,7 +44,6 @@ pkgs: with pkgs; [
     ripgrep
     # youtube-dl
     kdeconnect
-    # plover.dev
     speedcrunch
     unzip
     gcc
@@ -50,12 +52,19 @@ pkgs: with pkgs; [
     appimage-run
     libpulseaudio
     sidequest
+    direnv
+    ispell
+    unstable.plover.dev
+    zip
 
     #finance
     beancount
     wmctrl
     xdotool
     fava
+
+    #office
+    libreoffice
 
     #scripting
     notify-desktop
@@ -82,4 +91,10 @@ pkgs: with pkgs; [
     webcamoid
     peek
     gimp
+    avidemux
+    unstable.yt-dlp
+
+    #games
+    minecraft
+    unstable.multimc
   ]

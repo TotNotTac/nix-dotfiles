@@ -15,12 +15,6 @@ pkgs: with pkgs; [
       rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
       sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
     }) {})
-    (haskellPackages.callCabal2nix "haskell-docs-cli" (fetchFromGitHub {
-        owner = "lazamar";
-        repo = "haskell-docs-cli";
-        rev = "e7f1a60db8696fc96987a3447d402c4d0d54b5e0";
-        sha256 = "sha256-/9VjXFgbBz/OXjxu8/N7enNdVs1sQZmUiKhjSTIl6Fg=";
-    }) {  })
 
     #programming
     unstable.openjdk17_headless
@@ -33,15 +27,17 @@ pkgs: with pkgs; [
     stack
     pkg-config
     mariadb
-    # nodejs
-    # nodePackages.npm
-    # nodePackages."@angular/cli"
     mysql-workbench
     postman
     makeWrapper
     rustup
     haskellPackages.nix-thunk
-    hello
+    (haskellPackages.callCabal2nix "haskell-docs-cli" (fetchFromGitHub {
+        owner = "lazamar";
+        repo = "haskell-docs-cli";
+        rev = "e7f1a60db8696fc96987a3447d402c4d0d54b5e0";
+        sha256 = "sha256-/9VjXFgbBz/OXjxu8/N7enNdVs1sQZmUiKhjSTIl6Fg=";
+    }) {})
 
     #utility
     ranger
@@ -100,7 +96,6 @@ pkgs: with pkgs; [
 
     #multimedia
     spotify
-    #mpv
     celluloid
     feh
     aegisub
@@ -115,5 +110,5 @@ pkgs: with pkgs; [
     lutris
 
     #Mail
-    offlineimap
+    # offlineimap
   ]

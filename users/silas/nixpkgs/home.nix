@@ -2,47 +2,28 @@
 
 {
   imports = [
-    ./modules/default.nix
-    ./fonts.nix
+    ./modules/programs/programming/neovim
+    ./modules/programs/programming/git
+    ./modules/programs/programming/emacs
+    ./modules/programs/terminal/zsh
+    ./modules/programs/terminal/zoxide
+    ./modules/programs/media/mpv
+    ./modules/xresources
+    ./modules/programs/browser/vieb
+    ./modules/programs/windowmanager/bspwm
+    ./modules/services/kdeconnect
+    ./modules/services/lorri
+    ./modules/services/security
+    ./modules/services/syncthing
+    # ./modules/windowmanager/xmonad
+    ./modules/fonts
   ];
 
   nixpkgs.config.allowUnfree = true;
 
   home.packages = import ./packages.nix pkgs;
 
-  #Latest emacs from master branch
-   nixpkgs.overlays = [
-     (import (builtins.fetchGit {
-       name = "emacs-master-pinned-21-07-21";
-       url = https://github.com/nix-community/emacs-overlay;
-       ref = "refs/heads/master";
-       rev = "676a4f41e776229df3f191962b08d7c7c7891e33";
-     }))
-   ];
-   programs.emacs = {
-     enable = true;
-     package = pkgs.emacsGcc;
-     extraPackages = (epkgs: [ epkgs.vterm ]);
-   };
-
-  programs.zsh.enable = true;
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-  services.lorri.enable = true;
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
-  programs.password-store.enable = true;
-  services.syncthing = {
-    enable = true;
-    tray = {
-      #enable = true;
-    };
-
-  };
+  nixpkgs.overlays = [];
 
   home.sessionVariables = {
     JAVA_HOME="$HOME/.nix-profile/lib/openjdk";

@@ -64,12 +64,13 @@
   hardware.pulseaudio.support32Bit = true;
   nixpkgs.config.pulseaudio = true;
 
-  services.syncthing = {
-    enable = true;
-    user = "silas";
-    dataDir = "/home/silas/Sync";
-  }; 
+  # services.syncthing = {
+  #   enable = true;
+  #   user = "silas";
+  #   dataDir = "/home/silas/Sync";
+  # }; 
   services.flatpak.enable = true;
+  services.lorri.enable = true;
   #services.pipewire = {
   #  enable=true;
   #  alsa.enable=true;
@@ -83,26 +84,25 @@
     displayManager.gdm.enable = true;
     #libinput.enable = false;
     #synaptics.enable = true;
-    desktopManager = {
-      # xfce = {
-      #   enable = true;
-      #   noDesktop = true;
-      #   enableXfwm = false;
-      # };
-      plasma5.enable = true;
-      session = [
+    windowManager.xmonad = {
+      enable = true;
+      extraPackages = haskellPackages: [
       ];
+      enableContribAndExtras = true;
+    };
+    desktopManager = {
+      plasma5.enable = true;
     };
   };
 
 
- services.emacs.package = pkgs.emacsUnstable;
+ #services.emacs.package = pkgs.emacsUnstable;
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-    }))
-  ];
+ # nixpkgs.overlays = [
+ #   (import (builtins.fetchTarball {
+ #     url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+ #   }))
+ # ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -122,7 +122,7 @@
     (wine.override { wineBuild = "wine64";})
     cacert
     steam
-    emacs
+    #emacs
     cmake
     # wineWowPackages.stable
   ];
@@ -149,6 +149,7 @@
     automatic=true;
     options = "--delete-older-than 15d";
   };
+  nix.autoOptimiseStore = true;
 
 
   # Select internationalisation properties.

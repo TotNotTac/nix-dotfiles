@@ -11,21 +11,26 @@
   home.packages = import ./packages.nix pkgs;
 
   #Latest emacs from master branch
-  # nixpkgs.overlays = [
-  #   (import (builtins.fetchGit {
-  #     name = "emacs-master-pinned-21-07-21";
-  #     url = https://github.com/nix-community/emacs-overlay;
-  #     ref = "refs/heads/master";
-  #     rev = "676a4f41e776229df3f191962b08d7c7c7891e33";
-  #   }))
-  # ];
-  # programs.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacsGcc;
-  #   extraPackages = (epkgs: [ epkgs.vterm ]);
-  # };
+   nixpkgs.overlays = [
+     (import (builtins.fetchGit {
+       name = "emacs-master-pinned-21-07-21";
+       url = https://github.com/nix-community/emacs-overlay;
+       ref = "refs/heads/master";
+       rev = "676a4f41e776229df3f191962b08d7c7c7891e33";
+     }))
+   ];
+   programs.emacs = {
+     enable = true;
+     package = pkgs.emacsGcc;
+     extraPackages = (epkgs: [ epkgs.vterm ]);
+   };
 
   programs.zsh.enable = true;
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  services.lorri.enable = true;
   services.kdeconnect = {
     enable = true;
     indicator = true;
@@ -45,6 +50,7 @@
     VISUAL = "nvim";
     TERMINAL = "konsole";
     BROWSER = "brave";
+    STUDENTNUMMER = builtins.readFile ./studentnummer.txt;
   };
   xsession.initExtra = ''
     xdg-settings set default-web-browser brave-browser.desktop

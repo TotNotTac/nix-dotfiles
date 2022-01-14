@@ -1,0 +1,12 @@
+cabal-version:      3.0
+name:               myXmonad
+version:            0.1.0.0
+author:             jongs29
+maintainer:         silas.de.jong@hva.nl
+extra-source-files: CHANGELOG.md
+
+library
+    exposed-modules:  MyLib
+    build-depends:    base
+    hs-source-dirs:   src
+    default-language: Haskell2010

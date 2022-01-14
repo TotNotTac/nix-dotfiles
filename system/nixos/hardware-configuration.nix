@@ -28,5 +28,4 @@
     ];
 
     hardware.bluetooth.enable = true;
-
 }

@@ -2,35 +2,46 @@ let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in
 pkgs: with pkgs; [
+    #Dictionaries
+    aspell
+    aspellDicts.nl
+
     #nix
     nox
+    rnix-lsp
     (import ( pkgs.fetchFromGitHub {
       owner = "Shopify";
       repo = "comma";
       rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
       sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
     }) {})
+    (haskellPackages.callCabal2nix "haskell-docs-cli" (fetchFromGitHub {
+        owner = "lazamar";
+        repo = "haskell-docs-cli";
+        rev = "e7f1a60db8696fc96987a3447d402c4d0d54b5e0";
+        sha256 = "sha256-/9VjXFgbBz/OXjxu8/N7enNdVs1sQZmUiKhjSTIl6Fg=";
+    }) {  })
 
     #programming
-    openjdk11_headless
+    unstable.openjdk17_headless
+    maven
     jetbrains.idea-ultimate
     jetbrains.webstorm
-    # gitAndTools.gitui
-    # lazygit
     ghc
     cabal-install
+    haskell-language-server
     stack
     pkg-config
-    # haskellPackages.OpenGL
-    # haskellPackages.OpenGLRaw
     mariadb
-    nodejs
-    nodePackages.npm
-    nodePackages."@angular/cli"
-    # mysql-workbench
+    # nodejs
+    # nodePackages.npm
+    # nodePackages."@angular/cli"
+    mysql-workbench
     postman
     makeWrapper
     rustup
+    haskellPackages.nix-thunk
+    hello
 
     #utility
     ranger
@@ -38,11 +49,11 @@ pkgs: with pkgs; [
     pstree
     sqlite
     exa
+    ncdu
     bat
     etcher
     ark
     ripgrep
-    # youtube-dl
     kdeconnect
     speedcrunch
     unzip
@@ -55,7 +66,12 @@ pkgs: with pkgs; [
     direnv
     ispell
     unstable.plover.dev
+    maim
+    xclip
     zip
+
+    # Packages for latex
+    pkgs.texlive.combined.scheme-full
 
     #finance
     beancount
@@ -69,6 +85,7 @@ pkgs: with pkgs; [
     #scripting
     notify-desktop
     babashka
+    reptyr
 
     #internet
     brave
@@ -76,8 +93,6 @@ pkgs: with pkgs; [
     qbittorrent
 
     #communication
-    #unstable.discord-canary
-    #unstable.discord
     discord-canary
     discord
     signal-desktop
@@ -85,7 +100,8 @@ pkgs: with pkgs; [
 
     #multimedia
     spotify
-    mpv
+    #mpv
+    celluloid
     feh
     aegisub
     webcamoid
@@ -96,5 +112,8 @@ pkgs: with pkgs; [
 
     #games
     minecraft
-    unstable.multimc
+    lutris
+
+    #Mail
+    offlineimap
   ]

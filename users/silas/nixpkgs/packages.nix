@@ -1,5 +1,5 @@
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in
 pkgs: with pkgs; [
     #Dictionaries
@@ -10,10 +10,10 @@ pkgs: with pkgs; [
     nox
     rnix-lsp
     (import ( pkgs.fetchFromGitHub {
-      owner = "Shopify";
-      repo = "comma";
-      rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
-      sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
+        owner = "Shopify";
+        repo = "comma";
+        rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
+        sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
     }) {})
 
     #programming
@@ -38,6 +38,7 @@ pkgs: with pkgs; [
         rev = "e7f1a60db8696fc96987a3447d402c4d0d54b5e0";
         sha256 = "sha256-/9VjXFgbBz/OXjxu8/N7enNdVs1sQZmUiKhjSTIl6Fg=";
     }) {})
+    (callPackage ./modules/programs/terminal/whatIsMyIp {})
 
     #utility
     ranger
@@ -111,4 +112,4 @@ pkgs: with pkgs; [
 
     #Mail
     # offlineimap
-  ]
+]

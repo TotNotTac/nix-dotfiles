@@ -44,6 +44,9 @@ super + space; w; m
 
 ## Sound specific ##
 
+super + space; s; s
+      switchSink
+
 super + space; s; t; m
       pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send "Microphone toggled"
 

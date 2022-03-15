@@ -17,6 +17,7 @@
         ./modules/services/sxhkd
         # ./modules/windowmanager/bspwm
         ./modules/fonts
+        ./modules/python
     ];
 
     nixpkgs.config.allowUnfree = true;

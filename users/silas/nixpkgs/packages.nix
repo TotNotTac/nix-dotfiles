@@ -47,13 +47,12 @@ pkgs: with pkgs; [
     zlib
     vscode
     jupyter
-    (python3.withPackages (ppkgs: with ppkgs; [
-      ppkgs.ipykernel
-    ]))
+    # (python3.withPackages (ppkgs: with ppkgs; [
+    #   ppkgs.ipykernel
+    # ]))
     # python3
     # python39Packages.virtualenv
     pipenv
-    nodePackages.pyright  
     # gcc
     llvm
     clang

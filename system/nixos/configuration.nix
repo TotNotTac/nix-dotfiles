@@ -6,22 +6,22 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./modules
-  ];
+      ./hardware-configuration.nix
+      ./modules/services/sxhkd
+    ];
 
- # Use the systemd-boot EFI boot loader.
- boot.loader = {
-   efi.canTouchEfiVariables = true;
-   efi.efiSysMountPoint = "/boot";
-   grub = {
-     enable = true;
-     version = 2;
-     device = "nodev";
-     fsIdentifier = "label";
-     efiSupport = true;
-     useOSProber = true;
-     extraEntries = ''
+  # Use the systemd-boot EFI boot loader.
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    efi.efiSysMountPoint = "/boot";
+    grub = {
+      enable = true;
+      version = 2;
+      device = "nodev";
+      fsIdentifier = "label";
+      efiSupport = true;
+      useOSProber = true;
+      extraEntries = ''
         menuEntry "Windows" {
           insmod part_gpt
           insmod fat

@@ -4,18 +4,18 @@
     imports = [
         ./modules/programs/programming/neovim
         ./modules/programs/programming/git
-        ./modules/programs/programming/emacs
+        # ./modules/programs/programming/emacs
         ./modules/programs/terminal/zsh
         ./modules/programs/terminal/zoxide
         ./modules/programs/media/mpv
         ./modules/xresources
-        ./modules/programs/browser/vieb
         ./modules/programs/windowmanager/bspwm
         ./modules/services/kdeconnect
         ./modules/services/lorri
         ./modules/services/security
         ./modules/services/syncthing
-        # ./modules/windowmanager/xmonad
+        ./modules/services/sxhkd
+        # ./modules/windowmanager/bspwm
         ./modules/fonts
     ];
 
@@ -29,13 +29,15 @@
         JAVA_HOME="$HOME/.nix-profile/lib/openjdk";
         EDITOR = "nvim";
         VISUAL = "nvim";
-        TERMINAL = "konsole";
         BROWSER = "brave";
         STUDENTNUMMER = builtins.readFile ./studentnummer.txt;
+        LD_LIBRARY_PATH="/home/silas/.nix-profile/lib";
+        # LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:/run/opengl-driver/lib/";
     };
     xsession.initExtra = ''
-    xdg-settings set default-web-browser brave-browser.desktop
-  '';
+        xdg-settings set default-web-browser brave-browser.desktop
+        sxhkd &
+    '';
 
     xsession.scriptPath = ".hm-xsession";
 

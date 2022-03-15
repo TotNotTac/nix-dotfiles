@@ -31,27 +31,28 @@
           chainloader /EFI/Microsoft/Boot/bootmgfw.efi
         }
      '';
-   };
- };
+    };
+  };
 
- boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
- nix = {
-   package = pkgs.nixUnstable;
-   extraOptions = ''
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
       experimental-features = nix-command flakes
    '';
- };
+  };
 
- virtualisation.docker.enable = true;
- virtualisation.virtualbox.host.enable = true;
- users.extraGroups.vboxusers.members = [ "@wheel" ];
+  hardware.bluetooth.enable = true;
 
- time.timeZone = "Europe/Amsterdam";
+  virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "@wheel" ];
+
+  time.timeZone = "Europe/Amsterdam";
 
   networking = {
     hostName = "Silas"; # Define your hostname.
-    #interfaces.enp0s3.useDHCP = true;
     networkmanager.enable = true;
     firewall = {
       allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
@@ -81,34 +82,34 @@
   services.gnome.gnome-keyring.enable = true;
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
+    # displayManager.gdm.enable = true;
+    displayManager.sddm.enable = true;
+    # windowManager.bspwm.enable = true;
     #libinput.enable = false;
     #synaptics.enable = true;
-    windowManager.xmonad = {
-      enable = true;
-      extraPackages = haskellPackages: [
-      ];
-      enableContribAndExtras = true;
-    };
     desktopManager = {
       plasma5.enable = true;
+      # xfce.enable = true;
     };
   };
 
 
- #services.emacs.package = pkgs.emacsUnstable;
+  #services.emacs.package = pkgs.emacsUnstable;
 
- # nixpkgs.overlays = [
- #   (import (builtins.fetchTarball {
- #     url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
- #   }))
- # ];
+  # nixpkgs.overlays = [
+  #   (import (builtins.fetchTarball {
+  #     url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+  #   }))
+  # ];
+
+  nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
+  nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
 
   nixpkgs.config.allowUnfree = true;
 
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
-    #home-manager
+    home-manager
     git
     wget 
     vim
@@ -122,23 +123,21 @@
     (wine.override { wineBuild = "wine64";})
     cacert
     steam
-    #emacs
     cmake
-    # wineWowPackages.stable
   ];
   nixpkgs.config.permittedInsecurePackages = [
   ];
 
-  environment.variables = {
-    #"SSL_CERT_FILE" = "/etc/ssl/certs/ca-bundle.crt";
-    #"CURL_CA_BUNDLE" = "/etc/ssl/certs/ca-certificates.crt";
-  };
+  # environment.variables = {
+  #   #"SSL_CERT_FILE" = "/etc/ssl/certs/ca-bundle.crt";
+  #   #"CURL_CA_BUNDLE" = "/etc/ssl/certs/ca-certificates.crt";
+  # };
 
   users.users.silas = {
     isNormalUser = true;
     home = "/home/silas";
     description = "Silas";
-    extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker"];
+    extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout"];
     shell = pkgs.zsh;
   };
   nix.trustedUsers = ["@wheel" "silas"];
@@ -153,7 +152,14 @@
 
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+      defaultLocale = "en_US.UTF-8";
+      inputMethod = {
+          enabled = "fcitx";
+          fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
+      };
+  };
+
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
@@ -164,11 +170,6 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

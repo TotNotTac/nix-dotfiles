@@ -1,0 +1,54 @@
+
+
+## Application launching ##
+
+super + space; o; b
+      $BROWSER &
+
+super + space; o; s
+      spotify &
+
+super + space; o; e
+      emacsclient -a "" -c &
+
+super + space; o; d
+      discord &
+
+super + space; o; f
+      dolphin &
+
+super + space; o; r
+      uxterm -e ranger &
+
+super + space; o; c
+      code &
+
+super + space; o; h
+      uxterm -e htop &
+
+super + space; o; t
+      teams &
+
+
+## Toggle commands ##
+
+super + space; t; w
+      if [[ $(nmcli radio wifi) == "enabled" ]]; then nmcli radio wifi off; notify-send "Wifi disabled"; else nmcli radio wifi on; notify-send "Wifi enabled"; fi
+
+super + space; w; n
+      xdotool getwindowfocus | xargs xdotool windowminimize
+
+super + space; w; m
+      xdotool getwindowfocus | xargs xdotool windowmaximize
+
+
+## Sound specific ##
+
+super + space; s; t; m
+      pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send "Microphone toggled"
+
+super + space; s; t; d
+      pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send "Sound toggled"
+
+super + space; space
+      rofi -show window

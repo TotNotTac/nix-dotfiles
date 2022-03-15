@@ -22,9 +22,12 @@
       woke="xinput set-prop 13 'Device Enabled' 1 && exit";
       ij="setsid idea-ultimate . >/dev/null 2>&1";
       ws="setsid webstorm . >/dev/null 2>&1";
+      pc="setsid pycharm-professional >/dev/null 2>&1";
       runPlover=", xhost + && sudo plover";
       ns="nix-shell";
       nsp="nix-shell -p";
+      # pkgsearch="nix search nixpkgs";
+      fix-plasma="killall -r \".*plasmashell.\" && kstart5 plasmashell";
     };
 
     envExtra = ''
@@ -36,22 +39,25 @@
     '';
 
     initExtra = ''
-      source ~/.p10k.zsh
       eval "$(direnv hook zsh)"
+
+      pkgsearch () {
+        nix search nixpkgs $1 | less -F
+      }
     '';
 
     zplug = {
       enable = true;
       plugins = [
-        { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ];  }
-        { name = "zsh-users/zsh-syntax-highlighting"; }
+        # { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ];  }
+        # { name = "zsh-users/zsh-syntax-highlighting"; }
       ];
     };
 
   };
   programs.zsh.oh-my-zsh = {
     enable=true;
-    #theme="robbyrussell";
+    theme="robbyrussell";
     plugins = [
       "git"
       "sudo"

@@ -17,28 +17,50 @@ pkgs: with pkgs; [
     }) {})
 
     #programming
-    unstable.openjdk17_headless
+    #unstable.openjdk17_headless
+    unstable.jdk
     maven
     jetbrains.idea-ultimate
     jetbrains.webstorm
+    jetbrains.pycharm-professional
+    jetbrains.datagrip
     ghc
     cabal-install
-    haskell-language-server
+    unstable.haskell-language-server
     stack
     pkg-config
     mariadb
-    mysql-workbench
+    entr
     postman
     makeWrapper
     rustup
-    haskellPackages.nix-thunk
-    (haskellPackages.callCabal2nix "haskell-docs-cli" (fetchFromGitHub {
-        owner = "lazamar";
-        repo = "haskell-docs-cli";
-        rev = "e7f1a60db8696fc96987a3447d402c4d0d54b5e0";
-        sha256 = "sha256-/9VjXFgbBz/OXjxu8/N7enNdVs1sQZmUiKhjSTIl6Fg=";
-    }) {})
+    # haskellPackages.nix-thunk
+    # (haskellPackages.callCabal2nix "haskell-docs-cli" (fetchFromGitHub {
+    #     owner = "lazamar";
+    #     repo = "haskell-docs-cli";
+    #     rev = "e7f1a60db8696fc96987a3447d402c4d0d54b5e0";
+    #     sha256 = "sha256-/9VjXFgbBz/OXjxu8/N7enNdVs1sQZmUiKhjSTIl6Fg=";
+    # }) {})
     (callPackage ./modules/programs/terminal/whatIsMyIp {})
+    nodejs
+    nodePackages.npm
+    zlib
+    vscode
+    jupyter
+    (python3.withPackages (ppkgs: with ppkgs; [
+      ppkgs.ipykernel
+    ]))
+    # python3
+    # python39Packages.virtualenv
+    pipenv
+    nodePackages.pyright  
+    # gcc
+    llvm
+    clang
+    clang-tools
+    llvmPackages_13.libcxx
+    emacs
+    plover.dev
 
     #utility
     ranger
@@ -54,7 +76,6 @@ pkgs: with pkgs; [
     kdeconnect
     speedcrunch
     unzip
-    gcc
     sqlite
     gnupg
     appimage-run
@@ -62,8 +83,9 @@ pkgs: with pkgs; [
     sidequest
     direnv
     ispell
-    unstable.plover.dev
+    #unstable.plover.dev
     maim
+    flameshot
     xclip
     zip
 
@@ -83,17 +105,17 @@ pkgs: with pkgs; [
     notify-desktop
     babashka
     reptyr
+    gzip
 
     #internet
     brave
-    unstable.vieb
     qbittorrent
 
     #communication
-    discord-canary
-    discord
+    unstable.discord-canary
+    unstable.discord
     signal-desktop
-    teams
+    #teams
 
     #multimedia
     spotify

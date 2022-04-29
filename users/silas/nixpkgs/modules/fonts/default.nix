@@ -3,10 +3,10 @@
 {
     fonts.fontconfig.enable = true;
     home.packages = [
-        (pkgs.nerdfonts.override { fonts = [
-                                       "FiraCode"
-                                   ]
-                                   ;
-                                 })
+        (pkgs.nerdfonts.override {
+            fonts = [
+                "FiraCode"
+            ] ;
+        })
     ];
 }

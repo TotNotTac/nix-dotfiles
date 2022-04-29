@@ -4,7 +4,6 @@
     imports = [
         ./modules/programs/programming/neovim
         ./modules/programs/programming/git
-        # ./modules/programs/programming/emacs
         ./modules/programs/terminal/zsh
         ./modules/programs/terminal/zoxide
         ./modules/programs/media/mpv
@@ -13,9 +12,7 @@
         ./modules/services/kdeconnect
         ./modules/services/lorri
         ./modules/services/security
-        ./modules/services/syncthing
         ./modules/services/sxhkd
-        # ./modules/windowmanager/bspwm
         ./modules/fonts
         ./modules/python
         ./modules/programs/plover
@@ -38,7 +35,7 @@
     };
     xsession.initExtra = ''
         xdg-settings set default-web-browser brave-browser.desktop
-        sxhkd &
+        #sxhkd &
     '';
 
     xsession.scriptPath = ".hm-xsession";

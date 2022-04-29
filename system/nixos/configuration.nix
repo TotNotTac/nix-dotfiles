@@ -48,7 +48,7 @@
   hardware.bluetooth.enable = true;
 
   virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "@wheel" ];
 
   time.timeZone = "Europe/Amsterdam";
@@ -57,8 +57,8 @@
     hostName = "Silas"; # Define your hostname.
     networkmanager.enable = true;
     firewall = {
-      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+      # allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+      # allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
     };
   };
 
@@ -67,62 +67,27 @@
   hardware.pulseaudio.support32Bit = true;
   nixpkgs.config.pulseaudio = true;
 
-  # services.jack = {
-  #   jackd.enable = true;
-  #   # support ALSA only programs via ALSA JACK PCM plugin
-  #   alsa.enable = false;
-  #   # support ALSA only programs via loopback device (supports programs like Steam)
-  #   loopback = {
-  #     enable = true;
-  #     # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
-  #     #dmixConfig = ''
-  #     #  period_size 2048
-  #     #'';
-  #   };
-  # };
-
-  # security.rtkit.enable = true;
-  # services.pipewire = {
-  #     enable = true;
-  #     alsa.enable = true;
-  #     alsa.support32Bit = true;
-  #     pulse.enable = true;
-  #     jack.enable = true;
-  # };
-
   services.flatpak.enable = true;
   services.lorri.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  services.gnome.gnome-keyring.enable = true;
+
+  # security.pam.services.gdm.enableGnomeKeyring = true;
+  # services.gnome.gnome-keyring.enable = true;
+
   services.xserver = {
     enable = true;
-    # displayManager.gdm.enable = true;
+
     displayManager.sddm.enable = true;
-    # windowManager.bspwm.enable = true;
-    #libinput.enable = false;
-    #synaptics.enable = true;
+
     desktopManager = {
       plasma5.enable = true;
-      # xfce.enable = true;
     };
+
   };
-
-
-  #services.emacs.package = pkgs.emacsUnstable;
-
-  # nixpkgs.overlays = [
-  #   (import (builtins.fetchTarball {
-  #     url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-  #   }))
-  # ];
 
   services.mysql = {
       enable = true;
       package = pkgs.mariadb;
   };
-
-  nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
-  nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -136,31 +101,20 @@
     htop
     killall
     partition-manager
-    lightspark
     unrar
-    openssl
     (wine.override { wineBuild = "wine64";})
-    cacert
     steam
-    cmake
-    #Pipewire
-    # qjackctl
-    # jack2
-  ];
-  nixpkgs.config.permittedInsecurePackages = [
   ];
 
-  # environment.variables = {
-  #   #"SSL_CERT_FILE" = "/etc/ssl/certs/ca-bundle.crt";
-  #   #"CURL_CA_BUNDLE" = "/etc/ssl/certs/ca-certificates.crt";
-  # };
+  users = {
+      mutableUsers = true;
+      users.silas = {
+          isNormalUser = true;
+          password = "nix";
+          extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout" "jackaudio"];
 
-  users.users.silas = {
-    isNormalUser = true;
-    home = "/home/silas";
-    description = "Silas";
-    extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout" "jackaudio"];
-    shell = pkgs.zsh;
+          shell = pkgs.zsh;
+      };
   };
   nix.trustedUsers = ["@wheel" "silas"];
 
@@ -172,16 +126,6 @@
   };
   nix.autoOptimiseStore = true;
 
-
-  # Select internationalisation properties.
-  i18n = {
-      # defaultLocale = "en_US.UTF-8";
-      # inputMethod = {
-      #     enabled = "fcitx";
-      #     fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
-      # };
-  };
-
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
@@ -191,7 +135,7 @@
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

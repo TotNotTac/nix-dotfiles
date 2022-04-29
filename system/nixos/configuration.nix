@@ -8,6 +8,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/services/sxhkd
+      ./modules/services/mongodb
       ./modules/programs/steam
     ];
 
@@ -66,19 +67,31 @@
   hardware.pulseaudio.support32Bit = true;
   nixpkgs.config.pulseaudio = true;
 
-  # services.syncthing = {
-  #   enable = true;
-  #   user = "silas";
-  #   dataDir = "/home/silas/Sync";
-  # }; 
+  # services.jack = {
+  #   jackd.enable = true;
+  #   # support ALSA only programs via ALSA JACK PCM plugin
+  #   alsa.enable = false;
+  #   # support ALSA only programs via loopback device (supports programs like Steam)
+  #   loopback = {
+  #     enable = true;
+  #     # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
+  #     #dmixConfig = ''
+  #     #  period_size 2048
+  #     #'';
+  #   };
+  # };
+
+  # security.rtkit.enable = true;
+  # services.pipewire = {
+  #     enable = true;
+  #     alsa.enable = true;
+  #     alsa.support32Bit = true;
+  #     pulse.enable = true;
+  #     jack.enable = true;
+  # };
+
   services.flatpak.enable = true;
   services.lorri.enable = true;
-  #services.pipewire = {
-  #  enable=true;
-  #  alsa.enable=true;
-  #  pulse.enable=true;
-  #  jack.enable=true;
-  #};
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
   services.xserver = {
@@ -103,6 +116,11 @@
   #   }))
   # ];
 
+  services.mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+  };
+
   nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
   nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
 
@@ -125,6 +143,9 @@
     cacert
     steam
     cmake
+    #Pipewire
+    # qjackctl
+    # jack2
   ];
   nixpkgs.config.permittedInsecurePackages = [
   ];
@@ -138,7 +159,7 @@
     isNormalUser = true;
     home = "/home/silas";
     description = "Silas";
-    extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout"];
+    extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout" "jackaudio"];
     shell = pkgs.zsh;
   };
   nix.trustedUsers = ["@wheel" "silas"];

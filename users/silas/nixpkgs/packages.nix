@@ -18,7 +18,11 @@ pkgs: with pkgs; [
 
     #programming
     #unstable.openjdk17_headless
+    # mysql-workbench
     unstable.jdk
+    clojure
+    clojure-lsp
+    clj-kondo
     maven
     jetbrains.idea-ultimate
     jetbrains.webstorm
@@ -30,6 +34,7 @@ pkgs: with pkgs; [
     stack
     pkg-config
     mariadb
+    sqlitebrowser
     entr
     postman
     makeWrapper
@@ -46,7 +51,8 @@ pkgs: with pkgs; [
     nodePackages.npm
     zlib
     vscode
-    jupyter
+    # jupyter
+    sqlite
     # (python3.withPackages (ppkgs: with ppkgs; [
     #   ppkgs.ipykernel
     # ]))
@@ -59,11 +65,12 @@ pkgs: with pkgs; [
     clang-tools
     llvmPackages_13.libcxx
     emacs
-    plover.dev
 
     #utility
     ranger
     diskonaut
+    jdupes
+    digikam
     pstree
     sqlite
     exa
@@ -76,6 +83,7 @@ pkgs: with pkgs; [
     speedcrunch
     unzip
     sqlite
+    gh
     gnupg
     appimage-run
     libpulseaudio
@@ -99,6 +107,7 @@ pkgs: with pkgs; [
 
     #office
     libreoffice
+    leafpad
 
     #scripting
     notify-desktop

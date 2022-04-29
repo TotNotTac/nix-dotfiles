@@ -4,28 +4,27 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [
-      (modulesPath + "/installer/scan/not-detected.nix")
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-      device = "/dev/disk/by-uuid/f1939302-aab2-4412-b005-99a5b21c7770";
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/f1939302-aab2-4412-b005-99a5b21c7770";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" = {
-      device = "/dev/disk/by-uuid/7BF6-4508";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/7BF6-4508";
       fsType = "vfat";
     };
 
-  swapDevices = [
-      { device = "/dev/disk/by-uuid/abae2eae-8323-4e92-8c96-a8e69b0fedfd"; }
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/abae2eae-8323-4e92-8c96-a8e69b0fedfd"; }
     ];
 
-    hardware.bluetooth.enable = true;
 }

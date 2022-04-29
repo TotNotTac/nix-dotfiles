@@ -18,6 +18,7 @@
         # ./modules/windowmanager/bspwm
         ./modules/fonts
         ./modules/python
+        ./modules/programs/plover
     ];
 
     nixpkgs.config.allowUnfree = true;

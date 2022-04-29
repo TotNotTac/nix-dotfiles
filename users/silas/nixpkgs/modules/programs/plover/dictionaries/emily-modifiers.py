@@ -110,7 +110,7 @@ def lookup(chord):
         character = ""
     else:
         # use * to distinguish symbol input from numerical or character input
-        if not "*" in seperator:
+        if "*" in seperator:
             # symbol input
             # extract the part of the symbol input
             secondMatch = re.fullmatch(r'([STKPWHR]*)([AO]*)([EU]*)', pattern)
@@ -205,7 +205,6 @@ def lookup(chord):
 
     # package it up with the syntax
     ret = "{#" + combo + "}"
-    # ret = ">>"+combo
 
     # all done! :D
     return ret

@@ -8,6 +8,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/services/sxhkd
+      ./modules/programs/steam
     ];
 
   # Use the systemd-boot EFI boot loader.

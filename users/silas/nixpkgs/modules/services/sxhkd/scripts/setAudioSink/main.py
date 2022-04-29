@@ -5,7 +5,7 @@ import pulsectl, sys
 
 SINK_ALIASES = {
   'Family 17h (Models 10h-1fh) HD Audio Controller Speaker + Headphones': "Builtin laptop audio",
-  'PCM2900B Audio CODEC Analog Stereo': "External audio interface",
+  'PCM2900B Audio CODEC Analog Stereo': "Audio interface",
   'Renoir Radeon High Definition Audio Controller HDMI / DisplayPort 1 Output': 'Monitor 1',
   'Renoir Radeon High Definition Audio Controller HDMI / DisplayPort 2 Output': "Monitor 2"
 }

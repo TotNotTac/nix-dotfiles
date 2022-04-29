@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-echo 'sxhkdrc' | entr -r sh -c 'sxhkd -c sxhkdrc'
+echo 'sxhkdrc' | entr -r sh -c 'sxhkd -c sxhkdrc -s fifo'

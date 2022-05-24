@@ -18,7 +18,8 @@ in
       vim-airline
       vim-nix
       gruvbox
-      customPlugins.fireNVim 
+      customPlugins.fireNVim
+      orgmode-nvim
     ];
     extraConfig = ''
       colorscheme gruvbox

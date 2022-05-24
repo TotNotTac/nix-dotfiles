@@ -7,7 +7,6 @@ pkgs: with pkgs; [
     aspellDicts.nl
 
     #nix
-    nox
     rnix-lsp
     (import ( pkgs.fetchFromGitHub {
         owner = "Shopify";
@@ -17,9 +16,10 @@ pkgs: with pkgs; [
     }) {})
 
     #programming
-    #unstable.openjdk17_headless
-    # mysql-workbench
-    unstable.jdk
+    tree-sitter
+    entr
+    haskellPackages.tree-sitter-haskell
+    jdk
     clojure
     clojure-lsp
     clj-kondo
@@ -32,14 +32,8 @@ pkgs: with pkgs; [
     cabal-install
     unstable.haskell-language-server
     stack
-    pkg-config
     mariadb
-    sqlitebrowser
-    entr
     postman
-    makeWrapper
-    rustup
-    # haskellPackages.nix-thunk
     # (haskellPackages.callCabal2nix "haskell-docs-cli" (fetchFromGitHub {
     #     owner = "lazamar";
     #     repo = "haskell-docs-cli";
@@ -50,96 +44,60 @@ pkgs: with pkgs; [
     nodejs
     nodePackages.npm
     zlib
+    glib
     vscode
-    # jupyter
     sqlite
-    # (python3.withPackages (ppkgs: with ppkgs; [
-    #   ppkgs.ipykernel
-    # ]))
-    # python3
-    # python39Packages.virtualenv
     pipenv
-    # gcc
-    llvm
-    clang
-    clang-tools
-    llvmPackages_13.libcxx
-    emacs
+    # unstable.emacs
+    jq
+    #rustup
+    cargo
+    rustc
+    robo3t
+    mongodb-tools
 
     #utility
     ranger
     diskonaut
-    jdupes
-    digikam
-    pstree
     sqlite
     exa
-    ncdu
     bat
-    etcher
     ark
     ripgrep
     kdeconnect
     speedcrunch
     unzip
     sqlite
-    gh
     gnupg
-    appimage-run
-    libpulseaudio
-    sidequest
     direnv
     ispell
-    #unstable.plover.dev
-    maim
+    # maim
     flameshot
     xclip
     zip
 
-    # Packages for latex
-    pkgs.texlive.combined.scheme-full
-
-    #finance
-    beancount
-    wmctrl
-    xdotool
-    fava
-
     #office
     libreoffice
-    leafpad
 
     #scripting
     notify-desktop
-    babashka
-    reptyr
-    gzip
+    wmctrl
+    xdotool
 
     #internet
     brave
     qbittorrent
 
     #communication
-    unstable.discord-canary
-    unstable.discord
+    discord
     signal-desktop
-    #teams
 
     #multimedia
     spotify
-    celluloid
     feh
-    aegisub
-    webcamoid
     peek
-    gimp
-    avidemux
     unstable.yt-dlp
 
     #games
     minecraft
-    lutris
-
-    #Mail
-    # offlineimap
 ]

@@ -16,6 +16,8 @@
         ./modules/fonts
         ./modules/python
         ./modules/programs/plover
+        ./modules/programs/emacs
+        ./modules/services/syncthing
     ];
 
     nixpkgs.config.allowUnfree = true;

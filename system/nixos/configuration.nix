@@ -7,9 +7,12 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      #include modules
       ./modules/services/sxhkd
       ./modules/services/mongodb
       ./modules/programs/steam
+      ./modules/programs/virt-manager
+      ./modules/hardware/logitech
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -54,12 +57,12 @@
   time.timeZone = "Europe/Amsterdam";
 
   networking = {
-    hostName = "Silas"; # Define your hostname.
-    networkmanager.enable = true;
-    firewall = {
-      # allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-      # allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
-    };
+      hostName = "Silas"; # Define your hostname.
+      networkmanager.enable = true;
+      firewall = {
+          # allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+          # allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+      };
   };
 
   sound.enable = true;
@@ -69,18 +72,17 @@
 
   services.flatpak.enable = true;
   services.lorri.enable = true;
-
   # security.pam.services.gdm.enableGnomeKeyring = true;
   # services.gnome.gnome-keyring.enable = true;
 
   services.xserver = {
-    enable = true;
+      enable = true;
 
-    displayManager.sddm.enable = true;
+      displayManager.sddm.enable = true;
 
-    desktopManager = {
-      plasma5.enable = true;
-    };
+      desktopManager = {
+          plasma5.enable = true;
+      };
 
   };
 
@@ -93,17 +95,17 @@
 
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
-    home-manager
-    git
-    wget 
-    vim
-    firefox
-    htop
-    killall
-    partition-manager
-    unrar
-    (wine.override { wineBuild = "wine64";})
-    steam
+      home-manager
+      git
+      wget
+      vim
+      firefox
+      htop
+      killall
+      partition-manager
+      unrar
+      (wine.override { wineBuild = "wine64";})
+      steam
   ];
 
   users = {
@@ -121,8 +123,8 @@
   programs.zsh.enable = true;
 
   nix.gc = {
-    automatic=true;
-    options = "--delete-older-than 15d";
+      automatic=true;
+      options = "--delete-older-than 5d";
   };
   nix.autoOptimiseStore = true;
 
@@ -146,4 +148,3 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
-

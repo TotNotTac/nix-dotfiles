@@ -4,8 +4,7 @@
 set +x
 
 rebuild_home() {
-  nix build .#homeConfigurations.silas.activationPackage
-  result/activate -b
+  home-manager switch --flake .
 }
 
 rebuild_system() {

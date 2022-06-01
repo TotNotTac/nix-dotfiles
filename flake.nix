@@ -1,6 +1,6 @@
 
 {
-    description = "Home Manager (dotfiles) and NixOS configurations";
+    description = "TotNotTac's nixos configuration flake";
 
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-22.05";

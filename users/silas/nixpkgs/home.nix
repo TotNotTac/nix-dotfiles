@@ -33,7 +33,7 @@
         BROWSER = "brave";
         STUDENTNUMMER = builtins.readFile ./studentnummer.txt;
         # LD_LIBRARY_PATH="/home/silas/.nix-profile/lib";
-        LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:/run/opengl-driver/lib/";
+        # LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:/run/opengl-driver/lib/";
     };
     xsession.initExtra = ''
         xdg-settings set default-web-browser brave-browser.desktop

@@ -5,8 +5,8 @@ in
 {
   programs.emacs = {
     enable = true;
-    package = unstable.emacs.override { nativeComp = true; };
-    extraPackages = epkgs: [ epkgs.vterm ];
+    package = pkgs.emacs28NativeComp;
+    # extraPackages = epkgs: [ epkgs.vterm ];
   };
 
   home.packages = with pkgs; [

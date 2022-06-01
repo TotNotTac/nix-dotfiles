@@ -1,0 +1,4 @@
+set +x
+
+nix build .#homeConfigurations.silas.activationPackage
+./result/activate

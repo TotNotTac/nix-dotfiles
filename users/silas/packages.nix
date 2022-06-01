@@ -1,6 +1,6 @@
-let
-    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in
+# let
+#     unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+# in
 pkgs: with pkgs; [
     #Dictionaries
     aspell
@@ -8,7 +8,7 @@ pkgs: with pkgs; [
 
     #nix
     rnix-lsp
-    # comma
+    comma
     # (import ( pkgs.fetchFromGitHub {
     #     owner = "nix-community";
     #     repo = "comma";
@@ -31,9 +31,8 @@ pkgs: with pkgs; [
     jetbrains.datagrip
     ghc
     cabal-install
-    unstable.haskell-language-server
+    haskell-language-server
     stack
-    mariadb
     postman
     # (haskellPackages.callCabal2nix "haskell-docs-cli" (fetchFromGitHub {
     #     owner = "lazamar";
@@ -49,7 +48,7 @@ pkgs: with pkgs; [
     vscode
     sqlite
     pipenv
-    # unstable.emacs
+    # emacs
     jq
     #rustup
     cargo
@@ -97,7 +96,7 @@ pkgs: with pkgs; [
     spotify
     feh
     peek
-    unstable.yt-dlp
+    yt-dlp
 
     #games
     minecraft

@@ -19,7 +19,7 @@ in
       vim-nix
       gruvbox
       customPlugins.fireNVim
-      orgmode-nvim
+      orgmode
     ];
     extraConfig = ''
       colorscheme gruvbox

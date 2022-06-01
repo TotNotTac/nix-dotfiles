@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}}:
+{ pkgs }:
 let
     path = with pkgs.python3Packages; buildPythonPackage rec {
         pname = "path";

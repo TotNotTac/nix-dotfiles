@@ -34,6 +34,7 @@
         STUDENTNUMMER = builtins.readFile ./studentnummer.txt;
         # LD_LIBRARY_PATH="/home/silas/.nix-profile/lib";
         # LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:/run/opengl-driver/lib/";
+        YOLO = "IT WORKS";
     };
     xsession.initExtra = ''
         xdg-settings set default-web-browser brave-browser.desktop

@@ -17,7 +17,7 @@ in
     inherit pkgs system username homeDirectory;
 
     stateVersion = "21.03";
-    configuration = import ./home.nix {
+    configuration = import ./../users/silas/home.nix {
       inherit pkgs;
       inherit (pkgs) config lib stdenv;
     };

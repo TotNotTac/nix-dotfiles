@@ -16,13 +16,14 @@
             system = "x86_64-linux";
         in
           {
-              nixosConfigurations = (import ./outputs/nixos-conf.nix {
-                  inherit (nixpkgs) lib;
-                  inherit inputs system;
-              });
+              nixosConfigurations = (
+                  import ./outputs/nixos-conf.nix {
+                      inherit (nixpkgs) lib;
+                      inherit inputs system;
+                  });
 
               homeConfigurations = (
-                  import ./users/silas/home-conf.nix {
+                  import ./outputs/home-conf.nix {
                       inherit system nixpkgs home-manager;
                   }
               );

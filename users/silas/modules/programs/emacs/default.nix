@@ -1,12 +1,9 @@
-{ pkgs, config, ... }:
-let
-    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in
+{ pkgs, config, unstable, ... }:
 {
   programs.emacs = {
     enable = true;
     package = pkgs.emacs28NativeComp;
-    # extraPackages = epkgs: [ epkgs.vterm ];
+    extraPackages = epkgs: [ epkgs.vterm ];
   };
 
   home.packages = with pkgs; [

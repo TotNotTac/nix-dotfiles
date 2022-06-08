@@ -1,7 +1,4 @@
-# let
-#     unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-# in
-pkgs: with pkgs; [
+pkgs: unstable: with pkgs; [
     #Dictionaries
     aspell
     aspellDicts.nl
@@ -9,17 +6,13 @@ pkgs: with pkgs; [
     #nix
     rnix-lsp
     comma
-    # (import ( pkgs.fetchFromGitHub {
-    #     owner = "nix-community";
-    #     repo = "comma";
-    #     rev = "034a9ca440370fc1eccbed43ff345fb6ea1f0d27";
-    #     sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
-    # }) {})
 
     #programming
+    kitty
+    alacritty
+    ueberzug
     tree-sitter
     entr
-    haskellPackages.tree-sitter-haskell
     jdk
     clojure
     clojure-lsp
@@ -31,15 +24,9 @@ pkgs: with pkgs; [
     jetbrains.datagrip
     ghc
     cabal-install
-    haskell-language-server
+    # unstable.haskell-language-server
     stack
     postman
-    # (haskellPackages.callCabal2nix "haskell-docs-cli" (fetchFromGitHub {
-    #     owner = "lazamar";
-    #     repo = "haskell-docs-cli";
-    #     rev = "e7f1a60db8696fc96987a3447d402c4d0d54b5e0";
-    #     sha256 = "sha256-/9VjXFgbBz/OXjxu8/N7enNdVs1sQZmUiKhjSTIl6Fg=";
-    # }) {})
     (callPackage ./modules/programs/terminal/whatIsMyIp {})
     nodejs
     nodePackages.npm
@@ -48,13 +35,12 @@ pkgs: with pkgs; [
     vscode
     sqlite
     pipenv
-    # emacs
     jq
-    #rustup
     cargo
     rustc
     robo3t
     mongodb-tools
+    docker-compose
 
     #utility
     ranger
@@ -71,7 +57,6 @@ pkgs: with pkgs; [
     gnupg
     direnv
     ispell
-    # maim
     flameshot
     xclip
     zip
@@ -97,7 +82,4 @@ pkgs: with pkgs; [
     feh
     peek
     yt-dlp
-
-    #games
-    minecraft
 ]

@@ -49,6 +49,7 @@
   };
 
   hardware.bluetooth.enable = true;
+  hardware.opengl.enable = true;
 
   virtualisation.docker.enable = true;
   # virtualisation.virtualbox.host.enable = true;

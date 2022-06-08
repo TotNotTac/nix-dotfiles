@@ -18,7 +18,7 @@ super + space; o; f
       dolphin &
 
 super + space; o; r
-      uxterm -e ranger &
+      konsole -e ranger &
 
 super + space; o; c
       code &

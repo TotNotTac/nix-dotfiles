@@ -6,5 +6,5 @@
         bashrcExtra = ''
             eval "$(direnv hook bash)"
         '';
-    }
+    };
 }

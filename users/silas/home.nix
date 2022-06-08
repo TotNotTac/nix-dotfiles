@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 
 {
     imports = [
@@ -22,7 +22,7 @@
 
     nixpkgs.config.allowUnfree = true;
 
-    home.packages = import ./packages.nix pkgs;
+    home.packages = import ./packages.nix pkgs unstable;
 
     nixpkgs.overlays = [];
 
@@ -32,6 +32,7 @@
         VISUAL = "nvim";
         BROWSER = "brave";
         STUDENTNUMMER = builtins.readFile ./studentnummer.txt;
+        RANGER_LOAD_DEFAULT_RC = "FALSE";
         # LD_LIBRARY_PATH="/home/silas/.nix-profile/lib";
         # LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:/run/opengl-driver/lib/";
     };

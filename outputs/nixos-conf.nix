@@ -6,7 +6,16 @@
         specialArgs = { inherit inputs; };
 
         modules = [
-            ./../system/configuration.nix
+            ./../systems/lenovo/configuration.nix
+        ];
+    };
+
+    workvm = lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs;  };
+
+        modules = [
+            ./../systems/workvm/configuration.nix
         ];
     };
 }

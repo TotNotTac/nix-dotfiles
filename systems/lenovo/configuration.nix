@@ -5,14 +5,16 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+
+
+      [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       #include modules
-      ./modules/services/sxhkd
-      ./modules/services/mongodb
-      ./modules/programs/steam
-      ./modules/programs/virt-manager
-      ./modules/hardware/logitech
+      ./../../modules/services/sxhkd
+      ./../../modules/services/mongodb
+      ./../../modules/programs/steam
+      ./../../modules/programs/virt-manager
+      ./../../modules/hardware/logitech
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -85,6 +87,7 @@
           plasma5.enable = true;
       };
 
+      libinput.enable = true;
   };
 
   services.mysql = {

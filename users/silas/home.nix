@@ -18,11 +18,10 @@
         ./modules/programs/plover
         ./modules/programs/emacs
         ./modules/services/syncthing
+        ./packages.nix
     ];
 
     nixpkgs.config.allowUnfree = true;
-
-    home.packages = import ./packages.nix pkgs unstable;
 
     nixpkgs.overlays = [];
 

@@ -27,7 +27,7 @@ super + space; o; h
       uxterm -e htop &
 
 super + space; o; t
-      teams &
+      $TERMINAL &
 
 
 ## Toggle commands ##
@@ -39,7 +39,7 @@ super + space; w; n
       xdotool getwindowfocus | xargs xdotool windowminimize
 
 super + space; w; m
-      xdotool getwindowfocus | xargs xdotool windowmaximize
+      xdotool windowsize $(xdotool getactivewindow) 100% 100%
 
 
 ## Sound specific ##

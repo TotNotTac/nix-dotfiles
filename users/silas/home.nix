@@ -14,7 +14,6 @@
         ./modules/services/security
         ./modules/services/sxhkd
         ./modules/fonts
-        ./modules/python
         ./modules/programs/plover
         ./modules/programs/emacs
         ./modules/services/syncthing
@@ -34,6 +33,7 @@
         RANGER_LOAD_DEFAULT_RC = "FALSE";
         # LD_LIBRARY_PATH="/home/silas/.nix-profile/lib";
         # LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:/run/opengl-driver/lib/";
+        TERMINAL = "konsole";
     };
     xsession.initExtra = ''
         xdg-settings set default-web-browser brave-browser.desktop

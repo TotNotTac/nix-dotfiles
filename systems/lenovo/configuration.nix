@@ -106,7 +106,7 @@
       firefox
       htop
       killall
-      partition-manager
+      gparted
       unrar
       (wine.override { wineBuild = "wine64";})
       steam

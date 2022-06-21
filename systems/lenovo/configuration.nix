@@ -5,8 +5,6 @@
 
 {
   imports =
-
-
       [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       #include modules
@@ -21,6 +19,7 @@
   boot.loader = {
     efi.canTouchEfiVariables = true;
     efi.efiSysMountPoint = "/boot";
+    # systemd-boot.enable = true;
     grub = {
       enable = true;
       version = 2;
@@ -28,16 +27,6 @@
       fsIdentifier = "label";
       efiSupport = true;
       useOSProber = true;
-      extraEntries = ''
-        menuEntry "Windows" {
-          insmod part_gpt
-          insmod fat
-          insmod search_fs_uuid
-          insmod chain
-          search --fs-uuid --set=root 306EF95C6EF91B74
-          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-        }
-     '';
     };
   };
 
@@ -54,7 +43,6 @@
   hardware.opengl.enable = true;
 
   virtualisation.docker.enable = true;
-  # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "@wheel" ];
 
   time.timeZone = "Europe/Amsterdam";
@@ -62,10 +50,6 @@
   networking = {
       hostName = "Silas"; # Define your hostname.
       networkmanager.enable = true;
-      firewall = {
-          # allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-          # allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
-      };
   };
 
   sound.enable = true;
@@ -75,25 +59,20 @@
 
   services.flatpak.enable = true;
   services.lorri.enable = true;
-  # security.pam.services.gdm.enableGnomeKeyring = true;
-  # services.gnome.gnome-keyring.enable = true;
 
   services.xserver = {
       enable = true;
 
       displayManager.sddm.enable = true;
-
-      desktopManager = {
-          plasma5.enable = true;
-      };
+      desktopManager.plasma5.enable = true;
 
       libinput.enable = true;
   };
 
-  services.mysql = {
-      enable = true;
-      package = pkgs.mariadb;
-  };
+  # services.mysql = {
+  #     enable = true;
+  #     package = pkgs.mariadb;
+  # };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -109,7 +88,6 @@
       gparted
       unrar
       (wine.override { wineBuild = "wine64";})
-      steam
   ];
 
   users = {
@@ -132,10 +110,6 @@
   };
   nix.autoOptimiseStore = true;
 
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";

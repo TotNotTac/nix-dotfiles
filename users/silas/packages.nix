@@ -6,60 +6,60 @@
         aspellDicts.nl
 
         #nix
-        rnix-lsp
         comma
+        rnix-lsp
 
         #programming
-        kitty
+        # unstable.haskell-language-server
+        (callPackage ./modules/programs/terminal/whatIsMyIp {})
         alacritty
-        ueberzug
-        tree-sitter
-        entr
-        jdk
+        cabal-install
+        cargo
+        clj-kondo
         clojure
         clojure-lsp
-        clj-kondo
-        maven
-        jetbrains.idea-ultimate
-        jetbrains.webstorm
-        jetbrains.pycharm-professional
-        jetbrains.datagrip
-        ghc
-        cabal-install
-        # unstable.haskell-language-server
-        stack
-        postman
-        (callPackage ./modules/programs/terminal/whatIsMyIp {})
-        nodejs
-        nodePackages.npm
-        zlib
-        glib
-        vscode
-        sqlite
-        pipenv
-        jq
-        cargo
-        rustc
-        robo3t
-        mongodb-tools
         docker-compose
+        entr
+        ghc
+        glib
+        jdk
+        jetbrains.datagrip
+        jetbrains.idea-ultimate
+        jetbrains.pycharm-professional
+        jetbrains.webstorm
+        jq
+        kitty
+        maven
+        mongodb-tools
+        nodePackages.npm
+        nodejs
+        pipenv
+        postman
+        robo3t
+        rustc
+        sqlite
+        stack
+        tree-sitter
+        ueberzug
+        vscode
+        zlib
 
         #utility
-        ranger
-        diskonaut
-        sqlite
-        exa
-        bat
         ark
-        ripgrep
-        kdeconnect
-        speedcrunch
-        unzip
-        sqlite
-        gnupg
+        bat
         direnv
-        ispell
+        diskonaut
+        exa
         flameshot
+        gnupg
+        ispell
+        kdeconnect
+        ranger
+        ripgrep
+        speedcrunch
+        sqlite
+        sqlite
+        unzip
         xclip
         zip
 
@@ -80,9 +80,9 @@
         signal-desktop
 
         #multimedia
-        spotify
         feh
         peek
+        spotify
         yt-dlp
     ];
 }

@@ -14,17 +14,26 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f1939302-aab2-4412-b005-99a5b21c7770";
+    { device = "/dev/disk/by-uuid/d84de34f-7a7a-4ac4-8bb9-2cbcda037aa8";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7BF6-4508";
+  boot.initrd.luks.devices."luks-cd59fd60-13a9-4f83-9069-694080a88853".device = "/dev/disk/by-uuid/cd59fd60-13a9-4f83-9069-694080a88853";
+
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/FAB3-2C9C";
       fsType = "vfat";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/abae2eae-8323-4e92-8c96-a8e69b0fedfd"; }
-    ];
+  swapDevices = [ ];
 
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp3s0f4u1u3.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
+
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

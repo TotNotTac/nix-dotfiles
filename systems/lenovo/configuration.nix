@@ -15,19 +15,14 @@
       ./../../modules/hardware/logitech
     ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot";
-    # systemd-boot.enable = true;
-    grub = {
-      enable = true;
-      version = 2;
-      device = "nodev";
-      fsIdentifier = "label";
-      efiSupport = true;
-      useOSProber = true;
-    };
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  # Setup keyfile
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
   };
 
   boot.supportedFilesystems = [ "ntfs" ];

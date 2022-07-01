@@ -62,7 +62,6 @@
       "git"
       "sudo"
       "vi-mode"
-      "tmux"
     ];
   };
 }

@@ -2,7 +2,7 @@
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs28NativeComp;
+    package = (pkgs.emacs.override { nativeComp = true; });
     extraPackages = epkgs: [ epkgs.vterm ];
   };
 

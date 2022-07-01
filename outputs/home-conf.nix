@@ -23,7 +23,7 @@ in
   silas = home-manager.lib.homeManagerConfiguration rec {
     inherit pkgs system username homeDirectory;
 
-    stateVersion = "21.03";
+    stateVersion = "22.05";
     configuration = import ./../users/silas/home.nix {
       inherit pkgs unstable;
       inherit (pkgs) config lib stdenv;

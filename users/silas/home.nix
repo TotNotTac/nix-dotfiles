@@ -45,5 +45,4 @@
     programs.home-manager.enable = true;
     home.username = "silas";
     home.homeDirectory = "/home/silas";
-    home.stateVersion = "21.03";
 }

@@ -1,4 +1,3 @@
-
 {
     description = "TotNotTac's nixos configuration flake";
 

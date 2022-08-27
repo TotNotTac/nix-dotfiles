@@ -1,6 +1,7 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 # Shows the output of every command
 set +x
+pushd $(dirname $0)
 
 sudo nixos-rebuild switch --flake .#default

@@ -3,26 +3,4 @@
 # Shows the output of every command
 set +x
 
-rebuild_home() {
-  home-manager switch --flake .
-}
-
-rebuild_system() {
-  sudo nixos-rebuild switch --flake .#default
-}
-
-restart_X() {
-  echo "⚠️ Restarting X11 (requires authentication) ⚠️"
-  systemctl restart display-manager
-}
-
-case $1 in
-  "home")
-    rebuild_home;;
-  "restartx")
-    restart_X;;
-  "system")
-    rebuild_system;;
-  *)
-    echo "expected 'home', 'restartx', or 'system'";;
-esac
+sudo nixos-rebuild switch --flake .#default

@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
     imports = [
@@ -19,10 +19,6 @@
         ./modules/services/syncthing
         ./packages.nix
     ];
-
-    # nixpkgs.config.allowUnfree = true;
-
-    nixpkgs.overlays = [];
 
     home.sessionVariables = {
         JAVA_HOME="$HOME/.nix-profile/lib/openjdk";

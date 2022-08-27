@@ -12,13 +12,15 @@
         };
     };
 
-    outputs = { self, home-manager,  ... } @ inputs:
+    outputs = { self, home-manager, nixpkgs-unstable, ... } @ inputs:
         let
             system = "x86_64-linux";
+            overlay-unstable = final: prev: { unstable = nixpkgs-unstable.legacyPackages.x86_64-linux; };
         in {
             nixosConfigurations = {
                 default = inputs.nixpkgs.lib.nixosSystem {
                     inherit system;
+
                     specialArgs = { inherit inputs; };
 
                     modules = [
@@ -29,7 +31,7 @@
                             home-manager.users.silas = import ./users/silas/home.nix;
                         }
                         ({ pkgs, ... }: {
-                            nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
+                            nixpkgs.overlays = [ inputs.rust-overlay.overlays.default overlay-unstable ];
                         })
                     ];
                 };

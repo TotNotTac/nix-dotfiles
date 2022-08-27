@@ -1,9 +1,11 @@
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, ... }:
+
 {
     home.packages = with pkgs; [
         #Dictionaries
         aspell
         aspellDicts.nl
+        aspellDicts.en
 
         #nix
         comma
@@ -39,6 +41,7 @@
         maven
         mongodb-tools
         nodePackages.npm
+        yarn
         nodejs
         postman
         sqlite

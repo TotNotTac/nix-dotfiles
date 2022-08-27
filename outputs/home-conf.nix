@@ -1,32 +1,31 @@
-{ system, nixpkgs, home-manager, ... }:
+{ system, nixpkgs, home-manager, rust-overlay, ... }:
 
 let
   username = "silas";
   homeDirectory = "/home/${username}";
   configHome = "${homeDirectory}/.config";
 
+  overlays = [ (import rust-overlay) ];
   pkgs = import nixpkgs {
-    inherit system;
+    inherit system overlays;
     config.allowUnfree = true;
     config.xdg.configHome = configHome;
-    overlays = [];
+
   };
-    
+
   unstable = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-    config.xdg.configHome = configHome;
-    overlays = [];
+      inherit system;
+      config.allowUnfree = true;
+      config.xdg.configHome = configHome;
+      overlays = [];
   };
 in
 {
-  silas = home-manager.lib.homeManagerConfiguration rec {
-    inherit pkgs system username homeDirectory;
+    silas = home-manager.lib.homeManagerConfiguration rec {
+        inherit pkgs;
 
-    stateVersion = "22.05";
-    configuration = import ./../users/silas/home.nix {
-      inherit pkgs unstable;
-      inherit (pkgs) config lib stdenv;
+        modules = [
+            ./../users/silas/home.nix
+        ];
     };
-  };
 }

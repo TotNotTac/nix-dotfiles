@@ -40,6 +40,10 @@
   virtualisation.docker.enable = true;
   users.extraGroups.vboxusers.members = [ "@wheel" ];
 
+  i18n.defaultLocale = "nl_NL.UTF-8";
+  i18n.extraLocaleSettings = {
+      LC_ALL = "nl_NL.UTF-8";
+  };
   time.timeZone = "Europe/Amsterdam";
 
   networking = {
@@ -58,16 +62,29 @@
   services.xserver = {
       enable = true;
 
-      displayManager.sddm.enable = true;
+      displayManager = {
+          sddm.enable = true;
+          # autoLogin = {
+          #     enable = true;
+          #     user = "silas";
+          # };
+      };
       desktopManager.plasma5.enable = true;
 
       libinput.enable = true;
   };
 
-  # services.mysql = {
-  #     enable = true;
-  #     package = pkgs.mariadb;
-  # };
+  services.postgresql =
+      {
+      enable = true;
+      package = pkgs.postgresql_10;
+      enableTCPIP = true;
+      authentication = pkgs.lib.mkOverride 10 ''
+      local all all trust
+      host all all 127.0.0.1/32 trust
+      host all all ::1/128 trust
+    '';
+  };
 
   nixpkgs.config.allowUnfree = true;
 

@@ -14,8 +14,15 @@
         (callPackage ./modules/programs/terminal/whatIsMyIp {})
         alacritty
         cabal-install
-        cargo
-        clj-kondo
+        # cargo
+        (rust-bin.stable.latest.default.override {
+            extensions = [ "rust-src" "rustfmt" ];
+            targets = [ "wasm32-unknown-unknown" ];
+        })
+        rust-analyzer
+        cmake
+        trunk
+        # clj-kondo
         clojure
         clojure-lsp
         docker-compose
@@ -33,10 +40,7 @@
         mongodb-tools
         nodePackages.npm
         nodejs
-        pipenv
         postman
-        robo3t
-        rustc
         sqlite
         stack
         tree-sitter
@@ -58,10 +62,10 @@
         ripgrep
         speedcrunch
         sqlite
-        sqlite
         unzip
         xclip
         zip
+        qmk
 
         #office
         libreoffice
@@ -78,11 +82,20 @@
         #communication
         discord
         signal-desktop
+        thunderbird
+
+        #drawing
+        krita
+        wacomtablet
 
         #multimedia
         feh
         peek
         spotify
         yt-dlp
+
+        #gaming
+        polymc
+        wine
     ];
 }

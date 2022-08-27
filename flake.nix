@@ -4,6 +4,7 @@
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-22.05";
         nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
+        rust-overlay.url = "github:oxalica/rust-overlay";
 
         home-manager = {
             url = github:nix-community/home-manager;
@@ -11,7 +12,7 @@
         };
     };
 
-    outputs = inputs @ { self, ... }:
+    outputs = { self, ... } @ inputs:
         let
             system = "x86_64-linux";
         in
@@ -24,7 +25,7 @@
 
               homeConfigurations = (
                   import ./outputs/home-conf.nix {
-                      inherit system nixpkgs nixpkgs-unstable home-manager;
+                      inherit system nixpkgs nixpkgs-unstable home-manager rust-overlay;
                   }
               );
           };

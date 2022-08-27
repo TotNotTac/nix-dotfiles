@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -14,6 +14,10 @@
       ./../../modules/programs/virt-manager
       ./../../modules/hardware/logitech
     ];
+
+  # nixpkgs.overlays = [
+
+  # ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

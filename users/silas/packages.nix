@@ -66,6 +66,7 @@
         xclip
         zip
         qmk
+        hello
 
         #office
         libreoffice

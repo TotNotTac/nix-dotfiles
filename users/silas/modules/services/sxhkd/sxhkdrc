@@ -2,6 +2,11 @@
 
 ## Application launching ##
 
+# Launcher
+
+alt + space
+    rofi-launcher &
+
 super + space; o; b
       $BROWSER &
 

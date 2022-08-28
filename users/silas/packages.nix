@@ -70,6 +70,7 @@
         zip
         qmk
         hello
+        (callPackage ./modules/programs/launchers/rofi {})
 
         #office
         libreoffice

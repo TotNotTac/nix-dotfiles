@@ -102,6 +102,7 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.steam.enable = true;
+  programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
       home-manager
       git

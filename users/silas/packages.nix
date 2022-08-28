@@ -97,6 +97,8 @@
         peek
         spotify
         yt-dlp
+        qpwgraph
+        helvum
 
         #gaming
         polymc

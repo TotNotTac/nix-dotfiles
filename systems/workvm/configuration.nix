@@ -32,7 +32,7 @@
             mutableUsers = true;
             users.silas = {
                 isNormalUser = true;
-                # initialPassword = "nix";
+                initialPassword = "nix";
                 extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" ];
 
                 shell = pkgs.zsh;

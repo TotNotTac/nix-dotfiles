@@ -17,7 +17,7 @@
       nixhome="cd ~/.dotfiles/users/silas/nixpkgs";
       packages="vim ~/.dotfiles/users/silas/nixpkgs/packages.nix";
       homeswitch="home-manager switch";
-      addpkg="vim ~/.dotfiles/users/silas/nixpkgs/packages.nix && home-manager switch";
+      addpkg="vim ~/.dotfiles/users/silas/packages.nix && ~/.dotfiles/switch";
       slep="xinput set-prop 13 'Device Enabled' 0 && systemctl suspend";
       woke="xinput set-prop 13 'Device Enabled' 1 && exit";
       ij="setsid idea-ultimate . >/dev/null 2>&1";

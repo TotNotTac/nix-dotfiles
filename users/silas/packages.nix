@@ -12,7 +12,7 @@
         rnix-lsp
 
         #programming
-        # unstable.haskell-language-server
+        unstable.haskell-language-server
         (callPackage ./modules/programs/terminal/whatIsMyIp {})
         alacritty
         cabal-install
@@ -25,6 +25,7 @@
         cmake
         trunk
         # clj-kondo
+        babashka
         clojure
         clojure-lsp
         docker-compose
@@ -50,11 +51,19 @@
         ueberzug
         vscode
         zlib
+        nodePackages.prettier
+        mongodb
+        robo3t
+        lazydocker
 
         #utility
         ark
         bat
+        openvpn
         direnv
+        fzf
+        atool
+        unstable.clifm
         diskonaut
         exa
         flameshot
@@ -71,6 +80,7 @@
         qmk
         hello
         (callPackage ./modules/programs/launchers/rofi {})
+        tldr
 
         #office
         libreoffice
@@ -100,6 +110,7 @@
         yt-dlp
         qpwgraph
         helvum
+        vlc
 
         #gaming
         polymc

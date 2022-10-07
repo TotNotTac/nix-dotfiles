@@ -9,15 +9,12 @@
       ./hardware-configuration.nix
       #include modules
       ./../../modules/services/sxhkd
-      ./../../modules/services/mongodb
+      # ./../../modules/services/mongodb
       ./../../modules/programs/steam
       ./../../modules/programs/virt-manager
       ./../../modules/hardware/logitech
+      ./../../modules/audio
     ];
-
-  # nixpkgs.overlays = [
-
-  # ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -55,20 +52,6 @@
       networkmanager.enable = true;
   };
 
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-  # hardware.pulseaudio.support32Bit = true;
-  # nixpkgs.config.pulseaudio = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      jack.enable = true;
-  };
-
   services.flatpak.enable = true;
   services.lorri.enable = true;
 
@@ -77,10 +60,6 @@
 
       displayManager = {
           sddm.enable = true;
-          # autoLogin = {
-          #     enable = true;
-          #     user = "silas";
-          # };
       };
       desktopManager.plasma5.enable = true;
 
@@ -133,6 +112,7 @@
   nix.gc = {
       automatic=true;
       options = "--delete-older-than 5d";
+      dates = "23:00";
   };
   nix.autoOptimiseStore = true;
 

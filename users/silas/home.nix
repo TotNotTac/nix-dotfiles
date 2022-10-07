@@ -20,6 +20,10 @@
         ./packages.nix
     ];
 
+    home.file = {
+        ".background-image/background.webp".source = ./nix1.png;
+    };
+
     home.sessionVariables = {
         JAVA_HOME="$HOME/.nix-profile/lib/openjdk";
         EDITOR = "nvim";

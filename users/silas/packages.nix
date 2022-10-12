@@ -55,6 +55,10 @@
         mongodb
         robo3t
         lazydocker
+        (pkgs.callPackage (pkgs.path + "/pkgs/development/libraries/protobuf/generic-v3.nix") {
+            version = "3.12.4";
+            sha256 = "sha256-VyzFq1agobjvei4o/fQ8iMOLySf38DQsLb3C8kCz+78=";
+        })
 
         #utility
         ark

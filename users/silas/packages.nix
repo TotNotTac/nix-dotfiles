@@ -10,6 +10,7 @@
         #nix
         comma
         rnix-lsp
+        nix-output-monitor
 
         #programming
         unstable.haskell-language-server
@@ -17,10 +18,21 @@
         alacritty
         cabal-install
         # cargo
-        (rust-bin.stable.latest.default.override {
-            extensions = [ "rust-src" "rustfmt" ];
-            targets = [ "wasm32-unknown-unknown" ];
-        })
+        stm32cubemx
+        (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
+            extensions = [
+                "rust-src"
+                "rustfmt"
+                "llvm-tools-preview"
+            ];
+            targets = [ "wasm32-unknown-unknown" "thumbv7em-none-eabihf" "thumbv7em-none-eabi" ];
+        }))
+        platformio
+        arduino
+        gcc-arm-embedded
+        probe-run
+        libudev-zero
+        libusb1
         rust-analyzer
         cmake
         trunk
@@ -49,7 +61,32 @@
         stack
         tree-sitter
         ueberzug
-        vscode
+        # vscode
+        unstable.vscode
+        python3
+        # (unstable.vscode-with-extensions.override {
+        #     vscodeExtensions = with pkgs.vscode-extensions; [
+        #         matklad.rust-analyzer
+        #         ms-azuretools.vscode-docker
+        #         dbaeumer.vscode-eslint
+        #         esbenp.prettier-vscode
+        #         vscodevim.vim
+        #         eamodio.gitlens
+        #     ] ++ vscode-utils.extensionsFromVscodeMarketplace [
+        #         {
+        #             name = "code-runner";
+        #             publisher = "formulahendry";
+        #             version = "0.6.33";
+        #             sha256 = "166ia73vrcl5c9hm4q1a73qdn56m0jc7flfsk5p5q41na9f10lb0";
+        #         }
+        #         {
+        #             name = "remote-containers";
+        #             publisher = "ms-vscode-remote";
+        #             version = "0.260.0";
+        #             sha256 = "sha256-MnY0NdfLEP4cDBUwuQPLFZUUxWJDH2838tq0Cslm+L4=";
+        #         }
+        #     ];
+        # })
         zlib
         nodePackages.prettier
         mongodb
@@ -73,8 +110,6 @@
         flameshot
         gnupg
         ispell
-        kdeconnect
-        ranger
         ripgrep
         speedcrunch
         sqlite
@@ -82,17 +117,20 @@
         xclip
         zip
         qmk
-        hello
+        unstable.warpd
         (callPackage ./modules/programs/launchers/rofi {})
         tldr
+        gitflow
 
         #office
         libreoffice
+        zotero #bibliography and refferences
 
         #scripting
         notify-desktop
         wmctrl
         xdotool
+        autokey
 
         #internet
         brave
@@ -113,11 +151,11 @@
         spotify
         yt-dlp
         qpwgraph
-        helvum
         vlc
 
         #gaming
         polymc
         wine
+        lutris
     ];
 }

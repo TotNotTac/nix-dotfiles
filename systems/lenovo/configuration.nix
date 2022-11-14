@@ -35,7 +35,15 @@
    '';
   };
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+      enable = true;
+      package = pkgs.bluezFull;
+      settings = {
+          General = {
+              ControllerMode = "bredr";
+          };
+      };
+  };
   hardware.opengl.enable = true;
 
   virtualisation.docker.enable = true;
@@ -55,6 +63,8 @@
   services.flatpak.enable = true;
   services.lorri.enable = true;
 
+  programs.kdeconnect.enable = true;
+
   services.xserver = {
       enable = true;
 
@@ -68,15 +78,15 @@
 
   services.postgresql =
       {
-      enable = true;
-      package = pkgs.postgresql_10;
-      enableTCPIP = true;
-      authentication = pkgs.lib.mkOverride 10 ''
+          enable = true;
+          package = pkgs.postgresql_10;
+          enableTCPIP = true;
+          authentication = pkgs.lib.mkOverride 10 ''
       local all all trust
       host all all 127.0.0.1/32 trust
       host all all ::1/128 trust
     '';
-  };
+      };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -100,7 +110,7 @@
       users.silas = {
           isNormalUser = true;
           password = "nix";
-          extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout" "jackaudio"];
+          extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout" "jackaudio" "plugdev"];
 
           shell = pkgs.zsh;
       };

@@ -14,8 +14,9 @@
 
     outputs = { self, home-manager, nixpkgs-unstable, ... } @ inputs:
         let
+            # nixpkgs-unstable-unfree = nixpkgs-unstable
             system = "x86_64-linux";
-            overlay-unstable = final: prev: { unstable = nixpkgs-unstable.legacyPackages.x86_64-linux; };
+            overlay-unstable = final: prev: { unstable = import nixpkgs-unstable { config.allowUnfree = true; inherit system; }; };
         in {
             nixosConfigurations = {
                 default = inputs.nixpkgs.lib.nixosSystem {

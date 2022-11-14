@@ -1,4 +1,4 @@
-{ pkgs, config, unstable, ... }:
+{ pkgs, config, ... }:
 {
   programs.emacs = {
     enable = true;

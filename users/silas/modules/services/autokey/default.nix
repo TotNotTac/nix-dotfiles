@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     home.packages = [
@@ -9,7 +9,7 @@
         Unit.Description = "Autokey service";
         Install.WantedBy = [ "graphical-session-target" ];
         Service = {
-            Type = "Simple";
+            Type = "simple";
             ExecStart = "${pkgs.autokey}/bin/autokey";
             Restart = "always";
             RestartSec = "5";

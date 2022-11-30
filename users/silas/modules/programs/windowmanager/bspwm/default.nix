@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   home.file.".config/bspwmrc".source = config.lib.file.mkOutOfStoreSymlink ./bspwmrc;

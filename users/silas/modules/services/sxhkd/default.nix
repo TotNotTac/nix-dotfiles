@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
     # home.file.".config/sxhkd/sxhkdrc".source = config.lib.file.mkOutOfStoreSymlink ./sxhkdrc;
 

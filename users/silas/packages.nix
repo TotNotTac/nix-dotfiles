@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     home.packages = with pkgs; [
@@ -11,12 +11,15 @@
         comma
         rnix-lsp
         nix-output-monitor
+        nix-index
+        distrobox
 
         #programming
         unstable.haskell-language-server
         (callPackage ./modules/programs/terminal/whatIsMyIp {})
         alacritty
         cabal-install
+        idris2
         # cargo
         stm32cubemx
         (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
@@ -36,7 +39,6 @@
         rust-analyzer
         cmake
         trunk
-        # clj-kondo
         babashka
         clojure
         clojure-lsp
@@ -64,29 +66,6 @@
         # vscode
         unstable.vscode
         python3
-        # (unstable.vscode-with-extensions.override {
-        #     vscodeExtensions = with pkgs.vscode-extensions; [
-        #         matklad.rust-analyzer
-        #         ms-azuretools.vscode-docker
-        #         dbaeumer.vscode-eslint
-        #         esbenp.prettier-vscode
-        #         vscodevim.vim
-        #         eamodio.gitlens
-        #     ] ++ vscode-utils.extensionsFromVscodeMarketplace [
-        #         {
-        #             name = "code-runner";
-        #             publisher = "formulahendry";
-        #             version = "0.6.33";
-        #             sha256 = "166ia73vrcl5c9hm4q1a73qdn56m0jc7flfsk5p5q41na9f10lb0";
-        #         }
-        #         {
-        #             name = "remote-containers";
-        #             publisher = "ms-vscode-remote";
-        #             version = "0.260.0";
-        #             sha256 = "sha256-MnY0NdfLEP4cDBUwuQPLFZUUxWJDH2838tq0Cslm+L4=";
-        #         }
-        #     ];
-        # })
         zlib
         nodePackages.prettier
         mongodb
@@ -104,7 +83,6 @@
         direnv
         fzf
         atool
-        unstable.clifm
         diskonaut
         exa
         flameshot
@@ -124,6 +102,7 @@
 
         #office
         libreoffice
+        pandoc #for markdown rendering
         zotero #bibliography and refferences
 
         #scripting
@@ -138,12 +117,10 @@
 
         #communication
         discord
-        signal-desktop
         thunderbird
 
         #drawing
         krita
-        wacomtablet
 
         #multimedia
         feh
@@ -151,10 +128,11 @@
         spotify
         yt-dlp
         qpwgraph
+        easyeffects
         vlc
+        mixxx
 
         #gaming
-        polymc
         wine
         lutris
     ];

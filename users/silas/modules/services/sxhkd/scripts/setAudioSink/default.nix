@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
 app = pkgs.python3Packages.buildPythonApplication {

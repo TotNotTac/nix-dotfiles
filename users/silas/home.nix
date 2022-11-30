@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ ... }:
 
 {
     imports = [
@@ -8,8 +8,8 @@
         ./modules/programs/terminal/zoxide
         ./modules/programs/media/mpv
         ./modules/programs/ranger
-        ./modules/xresources
         ./modules/programs/windowmanager/bspwm
+        ./modules/xresources
         ./modules/services/lorri
         ./modules/services/security
         ./modules/services/sxhkd
@@ -22,7 +22,7 @@
     ];
 
     home.file = {
-        ".background-image/background.webp".source = ./nix1.png;
+        ".background-image/background.png".source = ./nix1.png;
     };
 
     home.sessionVariables = {

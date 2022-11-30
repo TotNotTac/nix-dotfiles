@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 
-{ pkgs, nixpgks-unstable, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -11,6 +11,7 @@
       ./../../modules/services/sxhkd
       # ./../../modules/services/mongodb
       ./../../modules/programs/steam
+      ./../../modules/programs/nix-alien
       ./../../modules/programs/virt-manager
       ./../../modules/hardware/logitech
       ./../../modules/audio

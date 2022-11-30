@@ -1,10 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     environment.systemPackages = with pkgs; [
         rofi
         sxhkd
     ];
+
+    # Fix this later
 
     # systemd.user.services.sxhkd = {
     #     partOf=["graphical-session.target"];

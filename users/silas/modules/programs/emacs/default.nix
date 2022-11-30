@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   programs.emacs = {
     enable = true;
@@ -9,5 +9,8 @@
   home.packages = with pkgs; [
     cmake #Needed to compile vterm
     gcc
+    fd
+    imagemagick
+    mediainfo
   ];
 }

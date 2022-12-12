@@ -2,27 +2,25 @@
     description = "TotNotTac's nixos configuration flake";
 
     inputs = {
-        nixpkgs.url = "nixpkgs/nixos-22.05";
+        nixpkgs.url = "nixpkgs/nixos-22.11";
         nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
         rust-overlay.url = "github:oxalica/rust-overlay";
-        nix-alien.url = "github:thiagokokada/nix-alien";
         home-manager = {
-            url = "github:nix-community/home-manager/release-22.05";
+            url = "github:nix-community/home-manager/release-22.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
-    outputs = { home-manager, nixpkgs-unstable, nix-alien, ... } @ inputs:
+    outputs = { home-manager, nixpkgs-unstable, ... } @ inputs:
         let
             system = "x86_64-linux";
             overlay-unstable = _: _: { unstable = import nixpkgs-unstable { config.allowUnfree = true; inherit system; }; };
-            nix-alien-pkgs = inputs.nix-alien.packages.${system};
         in {
             nixosConfigurations = {
                 default = inputs.nixpkgs.lib.nixosSystem {
                     inherit system;
 
-                    specialArgs = { inherit inputs nix-alien-pkgs; };
+                    specialArgs = { inherit inputs; };
 
                     modules = [
                         ./systems/lenovo/configuration.nix

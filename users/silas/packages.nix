@@ -16,6 +16,7 @@
 
         #programming
         unstable.haskell-language-server
+        ghcid
         (callPackage ./modules/programs/terminal/whatIsMyIp {})
         alacritty
         cabal-install
@@ -55,9 +56,9 @@
         kitty
         maven
         mongodb-tools
-        nodePackages.npm
+        # nodejs-16_x.nodePackages.npm
         yarn
-        nodejs
+        nodejs-16_x
         postman
         sqlite
         stack
@@ -67,7 +68,7 @@
         unstable.vscode
         python3
         zlib
-        nodePackages.prettier
+        # nodejs-16_x.nodePackages.prettier
         mongodb
         robo3t
         lazydocker
@@ -135,5 +136,6 @@
         #gaming
         wine
         lutris
+        prismlauncher
     ];
 }

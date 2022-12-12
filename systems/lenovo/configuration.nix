@@ -9,9 +9,9 @@
       ./hardware-configuration.nix
       #include modules
       ./../../modules/services/sxhkd
-      # ./../../modules/services/mongodb
+      ./../../modules/services/databases
       ./../../modules/programs/steam
-      ./../../modules/programs/nix-alien
+      # ./../../modules/programs/nix-alien
       ./../../modules/programs/virt-manager
       ./../../modules/hardware/logitech
       ./../../modules/audio
@@ -23,9 +23,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
+  boot.initrd.secrets."/crypto_keyfile.bin" = null;
 
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -39,11 +37,7 @@
   hardware.bluetooth = {
       enable = true;
       package = pkgs.bluezFull;
-      settings = {
-          General = {
-              ControllerMode = "bredr";
-          };
-      };
+      settings.General.ControllerMode = "bredr";
   };
   hardware.opengl.enable = true;
 
@@ -69,24 +63,20 @@
   services.xserver = {
       enable = true;
 
-      displayManager = {
-          sddm.enable = true;
-      };
+      displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
-
       libinput.enable = true;
   };
 
-  services.postgresql =
-      {
+  services.postgresql = {
           enable = true;
-          package = pkgs.postgresql_10;
+          package = pkgs.postgresql_15;
           enableTCPIP = true;
           authentication = pkgs.lib.mkOverride 10 ''
-      local all all trust
-      host all all 127.0.0.1/32 trust
-      host all all ::1/128 trust
-    '';
+            local all all trust
+            host all all 127.0.0.1/32 trust
+            host all all ::1/128 trust
+          '';
       };
 
   nixpkgs.config.allowUnfree = true;
@@ -116,7 +106,7 @@
           shell = pkgs.zsh;
       };
   };
-  nix.trustedUsers = ["@wheel" "silas"];
+  nix.settings.trusted-users = ["@wheel" "silas"];
 
   programs.zsh.enable = true;
 
@@ -125,7 +115,7 @@
       options = "--delete-older-than 5d";
       dates = "23:00";
   };
-  nix.autoOptimiseStore = true;
+  nix.settings.auto-optimise-store = true;
 
   # Configure keymap in X11
   # services.xserver.layout = "us";

@@ -1,12 +1,12 @@
 { pkgs, ... }:
 
 {
-    fonts.fontconfig.enable = true;
-    home.packages = [
-        (pkgs.nerdfonts.override {
-            fonts = [
-                "FiraCode"
-            ] ;
-        })
-    ];
+  fonts.fontconfig.enable = true;
+  home.packages = [
+    (pkgs.nerdfonts.override {
+      fonts = [
+        "FiraCode"
+      ];
+    })
+  ];
 }

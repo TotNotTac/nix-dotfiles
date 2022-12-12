@@ -1,11 +1,11 @@
 { ... }:
 {
-    services.mongodb = {
-        enable = true;
-    };
+  services.mongodb = {
+    enable = true;
+  };
 
-    services.redis.servers."mec" = {
-        enable = true;
-        port = 6379;
-    };
+  services.redis.servers."mec" = {
+    enable = true;
+    port = 6379;
+  };
 }

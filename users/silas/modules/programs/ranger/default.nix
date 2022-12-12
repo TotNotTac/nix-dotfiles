@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-    home.packages = [ pkgs.ranger ];
+  home.packages = [ pkgs.ranger ];
 
-    home.sessionVariables.RANGER_LOAD_DEFAULT_RC = "FALSE";
+  home.sessionVariables.RANGER_LOAD_DEFAULT_RC = "FALSE";
 }

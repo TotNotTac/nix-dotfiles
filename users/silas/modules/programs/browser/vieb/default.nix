@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = [pkgs.vieb];
+  home.packages = [ pkgs.vieb ];
 
   home.file."${config.home.homeDirectory}/.viebrc".text = ''
     set firefoxmode=google

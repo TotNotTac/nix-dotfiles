@@ -14,7 +14,7 @@
       magit = "setsid emacsclient -a '' -c -e '(magit-status)' >/dev/null 2>&1";
       ve = "$VISUAL";
       nixsys = "cd ~/.dotfiles/system/nixos";
-      nixhome="cd ~/.dotfiles/users/silas/nixpkgs";
+      nixhome = "cd ~/.dotfiles/users/silas/nixpkgs";
       packages = "vim ~/.dotfiles/users/silas/nixpkgs/packages.nix";
       homeswitch = "home-manager switch";
       addpkg = "vim ~/.dotfiles/users/silas/packages.nix && ~/.dotfiles/switch";
@@ -55,7 +55,7 @@
           function hmapw { hmapl "map (unwords.($*).words)" ; }
 
       fi
-      '';
+    '';
 
     zplug = {
       enable = true;

@@ -5,7 +5,8 @@
 
 {
   imports =
-      [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       #include modules
       ./../../modules/services/sxhkd
@@ -31,13 +32,13 @@
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
-   '';
+    '';
   };
 
   hardware.bluetooth = {
-      enable = true;
-      package = pkgs.bluezFull;
-      settings.General.ControllerMode = "bredr";
+    enable = true;
+    package = pkgs.bluezFull;
+    settings.General.ControllerMode = "bredr";
   };
   hardware.opengl.enable = true;
 
@@ -46,13 +47,13 @@
 
   i18n.defaultLocale = "nl_NL.UTF-8";
   i18n.extraLocaleSettings = {
-      LC_ALL = "nl_NL.UTF-8";
+    LC_ALL = "nl_NL.UTF-8";
   };
   time.timeZone = "Europe/Amsterdam";
 
   networking = {
-      hostName = "Silas"; # Define your hostname.
-      networkmanager.enable = true;
+    hostName = "Silas"; # Define your hostname.
+    networkmanager.enable = true;
   };
 
   services.flatpak.enable = true;
@@ -61,59 +62,59 @@
   programs.kdeconnect.enable = true;
 
   services.xserver = {
-      enable = true;
+    enable = true;
 
-      displayManager.sddm.enable = true;
-      desktopManager.plasma5.enable = true;
-      libinput.enable = true;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
+    libinput.enable = true;
   };
 
   services.postgresql = {
-          enable = true;
-          package = pkgs.postgresql_15;
-          enableTCPIP = true;
-          authentication = pkgs.lib.mkOverride 10 ''
-            local all all trust
-            host all all 127.0.0.1/32 trust
-            host all all ::1/128 trust
-          '';
-      };
+    enable = true;
+    package = pkgs.postgresql_15;
+    enableTCPIP = true;
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all all trust
+      host all all 127.0.0.1/32 trust
+      host all all ::1/128 trust
+    '';
+  };
 
   nixpkgs.config.allowUnfree = true;
 
   programs.steam.enable = true;
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
-      home-manager
-      git
-      wget
-      vim
-      firefox
-      htop
-      killall
-      gparted
-      unrar
-      (wine.override { wineBuild = "wine64";})
+    home-manager
+    git
+    wget
+    vim
+    firefox
+    htop
+    killall
+    gparted
+    unrar
+    (wine.override { wineBuild = "wine64"; })
   ];
 
   users = {
-      mutableUsers = true;
-      users.silas = {
-          isNormalUser = true;
-          password = "nix";
-          extraGroups = ["sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout" "jackaudio" "plugdev"];
+    mutableUsers = true;
+    users.silas = {
+      isNormalUser = true;
+      password = "nix";
+      extraGroups = [ "sudo" "wheel" "networkmanager" "audio" "video" "tty" "docker" "dialout" "jackaudio" "plugdev" ];
 
-          shell = pkgs.zsh;
-      };
+      shell = pkgs.zsh;
+    };
   };
-  nix.settings.trusted-users = ["@wheel" "silas"];
+  nix.settings.trusted-users = [ "@wheel" "silas" ];
 
   programs.zsh.enable = true;
 
   nix.gc = {
-      automatic=true;
-      options = "--delete-older-than 5d";
-      dates = "23:00";
+    automatic = true;
+    options = "--delete-older-than 5d";
+    dates = "23:00";
   };
   nix.settings.auto-optimise-store = true;
 

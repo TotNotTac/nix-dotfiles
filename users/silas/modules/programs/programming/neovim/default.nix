@@ -2,7 +2,7 @@
 let
   customPlugins = {
     fireNVim = pkgs.vimUtils.buildVimPlugin {
-      name="firenvim";
+      name = "firenvim";
       src = pkgs.fetchgit {
         url = "https://github.com/glacambre/firenvim";
         rev = "37d06a579b8459b140ab65d64b030fcc5f286935";
@@ -13,7 +13,7 @@ let
 in
 {
   programs.neovim = {
-    enable=true;
+    enable = true;
     plugins = with pkgs.vimPlugins; [
       vim-airline
       vim-nix

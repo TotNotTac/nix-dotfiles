@@ -1,7 +1,7 @@
 { ... }:
 {
   hardware.logitech.wireless = {
-      enable = true;
-      enableGraphical = true;
+    enable = true;
+    enableGraphical = true;
   };
 }

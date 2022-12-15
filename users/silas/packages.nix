@@ -100,6 +100,7 @@
     (callPackage ./modules/programs/launchers/rofi { })
     tldr
     gitflow
+    pre-commit
 
     #office
     libreoffice

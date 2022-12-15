@@ -111,6 +111,11 @@
 
   programs.zsh.enable = true;
 
+  # Enable insults on sudo
+  security.sudo.package = pkgs.sudo.override {
+      withInsults = true;
+  };
+
   nix.gc = {
     automatic = true;
     options = "--delete-older-than 5d";

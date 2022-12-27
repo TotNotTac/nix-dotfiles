@@ -1,14 +1,14 @@
 { pkgs, ... }:
 let
   customPlugins = {
-    fireNVim = pkgs.vimUtils.buildVimPlugin {
-      name = "firenvim";
-      src = pkgs.fetchgit {
-        url = "https://github.com/glacambre/firenvim";
-        rev = "37d06a579b8459b140ab65d64b030fcc5f286935";
-        sha256 = "1qf7mrm0b0z9h1jybf4jn38kg3g9q3lj3vhdrzs9yhyy5jncp700";
-      };
-    };
+    # fireNVim = pkgs.vimUtils.buildVimPlugin {
+    #   name = "firenvim";
+    #   src = pkgs.fetchgit {
+    #     url = "https://github.com/glacambre/firenvim";
+    #     rev = "37d06a579b8459b140ab65d64b030fcc5f286935";
+    #     sha256 = "1qf7mrm0b0z9h1jybf4jn38kg3g9q3lj3vhdrzs9yhyy5jncp700";
+    #   };
+    # };
   };
 in
 {
@@ -18,7 +18,6 @@ in
       vim-airline
       vim-nix
       gruvbox
-      customPlugins.fireNVim
       orgmode
     ];
     extraConfig = ''

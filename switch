@@ -5,3 +5,4 @@ set +x
 pushd $(dirname $0)
 
 sudo nixos-rebuild switch --flake .#default && notify-desktop -a "nixos-rebuild" "Rebuilding done" || notify-desktop -a "nixos-rebuild" "Rebuilding failed"
+./trim-generations.sh 3 14 default

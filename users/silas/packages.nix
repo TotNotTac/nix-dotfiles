@@ -43,7 +43,6 @@
     babashka
     clojure
     clojure-lsp
-    docker-compose
     entr
     ghc
     glib
@@ -59,6 +58,7 @@
     # nodejs-16_x.nodePackages.npm
     yarn
     nodejs-16_x
+    nodePackages.typescript-language-server
     postman
     sqlite
     stack
@@ -71,7 +71,10 @@
     # nodejs-16_x.nodePackages.prettier
     mongodb
     robo3t
+    # podman-tui
+    # podman-compose
     lazydocker
+    docker-compose
     (pkgs.callPackage (pkgs.path + "/pkgs/development/libraries/protobuf/generic-v3.nix") {
       version = "3.12.4";
       sha256 = "sha256-VyzFq1agobjvei4o/fQ8iMOLySf38DQsLb3C8kCz+78=";
@@ -101,17 +104,21 @@
     tldr
     gitflow
     pre-commit
+    moreutils
 
     #office
     libreoffice
     pandoc #for markdown rendering
     zotero #bibliography and refferences
+    texlive.combined.scheme-full
+    texlab
 
     #scripting
     notify-desktop
     wmctrl
     xdotool
     autokey
+    xorg.xwininfo
 
     #internet
     brave
@@ -130,6 +137,7 @@
     spotify
     yt-dlp
     qpwgraph
+    zathura
     easyeffects
     vlc
     mixxx
@@ -138,5 +146,6 @@
     wine
     lutris
     prismlauncher
+    sidequest
   ];
 }

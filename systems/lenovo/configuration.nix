@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
@@ -37,12 +37,16 @@
 
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluezFull;
-    settings.General.ControllerMode = "bredr";
+    # package = pkgs.bluezFull;
+    # settings.General.ControllerMode = "bredr";
   };
   hardware.opengl.enable = true;
 
   virtualisation.docker.enable = true;
+  # virtualisation.podman = {
+  #     enable = true;
+  #     defaultNetwork.dnsname.enable = true;
+  # };
   users.extraGroups.vboxusers.members = [ "@wheel" ];
 
   i18n.defaultLocale = "nl_NL.UTF-8";
@@ -95,6 +99,7 @@
     gparted
     unrar
     (wine.override { wineBuild = "wine64"; })
+    inputs.devenv.packages.x86_64-linux.devenv
   ];
 
   users = {
@@ -113,7 +118,7 @@
 
   # Enable insults on sudo
   security.sudo.package = pkgs.sudo.override {
-      withInsults = true;
+    withInsults = true;
   };
 
   nix.gc = {

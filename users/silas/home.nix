@@ -9,14 +9,15 @@
     ./modules/programs/media/mpv
     ./modules/programs/ranger
     ./modules/programs/windowmanager/bspwm
+    ./modules/programs/plover
+    ./modules/programs/tmux
+    ./modules/programs/emacs
     ./modules/xresources
     ./modules/services/lorri
     ./modules/services/security
     ./modules/services/sxhkd
     ./modules/services/autokey
     ./modules/fonts
-    ./modules/programs/plover
-    ./modules/programs/emacs
     ./modules/services/syncthing
     ./packages.nix
   ];

@@ -16,6 +16,7 @@
 
     #programming
     unstable.haskell-language-server
+    unstable.gopls
     ghcid
     (callPackage ./modules/programs/terminal/whatIsMyIp { })
     alacritty
@@ -44,10 +45,11 @@
     clojure
     clojure-lsp
     entr
-    ghc
+    unstable.ghc
     glib
     jdk
     jetbrains.datagrip
+    jetbrains.goland
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
     jetbrains.webstorm

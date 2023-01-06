@@ -22,6 +22,8 @@
     ./packages.nix
   ];
 
+  programs.go.enable = true;
+
   home.file = {
     ".background-image/background.png".source = ./nix1.png;
   };

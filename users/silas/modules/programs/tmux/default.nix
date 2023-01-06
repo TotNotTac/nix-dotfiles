@@ -3,6 +3,7 @@
 {
   programs.tmux = {
     enable = true;
+    tmuxinator.enable = true;
     keyMode = "vi";
 
     prefix = "C-Space";

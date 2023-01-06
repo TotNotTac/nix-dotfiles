@@ -8,7 +8,7 @@
     shellAliases = {
       vim = "nvim";
       ls = "exa";
-      ll = "exa -lah";
+      ll = "exa --git --long --binary --links --all --group-directories-first --sort=name";
       cat = "bat";
       e = "emacsclient -a '' -c";
       magit = "setsid emacsclient -a '' -c -e '(magit-status)' >/dev/null 2>&1";

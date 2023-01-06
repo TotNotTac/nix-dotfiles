@@ -123,7 +123,7 @@
 
   nix.gc = {
     automatic = true;
-    options = "--delete-older-than 5d";
+    options = "--delete-older-than 3d";
     dates = "23:00";
   };
   nix.settings.auto-optimise-store = true;

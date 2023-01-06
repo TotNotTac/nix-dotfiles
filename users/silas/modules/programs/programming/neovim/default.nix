@@ -19,8 +19,15 @@ in
       vim-nix
       gruvbox
       orgmode
+      leap-nvim
     ];
     extraConfig = ''
+      lua require('leap').add_default_mappings()
+
+      lua vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
+      lua vim.api.nvim_set_hl(0, 'LeapMatch', {fg = 'white', bold = true, nocombine = true,})
+      lua require('leap').opts.highlight_unlabeled_phase_one_targets = true
+
       colorscheme gruvbox
       tnoremap <A-Esc> <C-\><C-n>
       tnoremap <A-h> <C-\><C-N><C-w>h

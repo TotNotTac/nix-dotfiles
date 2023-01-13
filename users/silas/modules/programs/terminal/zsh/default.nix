@@ -55,7 +55,7 @@
           function hmapw { hmapl "map (unwords.($*).words)" ; }
 
       fi
-    '';
+    '' + builtins.readFile ./scripts/moveToTmux.sh;
 
     zplug = {
       enable = true;

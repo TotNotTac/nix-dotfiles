@@ -114,7 +114,11 @@
   };
   nix.settings.trusted-users = [ "@wheel" "silas" ];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
 
   # Enable insults on sudo
   security.sudo.package = pkgs.sudo.override {

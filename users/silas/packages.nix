@@ -32,7 +32,6 @@
       ];
       targets = [ "wasm32-unknown-unknown" "thumbv7em-none-eabihf" "thumbv7em-none-eabi" ];
     }))
-    platformio
     arduino
     gcc-arm-embedded
     probe-run
@@ -83,6 +82,7 @@
     })
 
     #utility
+    reptyr
     ark
     bat
     openvpn
@@ -134,6 +134,7 @@
     krita
 
     #multimedia
+    kdenlive
     feh
     peek
     spotify
@@ -149,5 +150,6 @@
     lutris
     prismlauncher
     sidequest
+    nudoku
   ];
 }

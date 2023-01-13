@@ -2,9 +2,10 @@
 
 function moveToTmux {
     set -m
+    jobLine=$(jobs -l | tail -1)
 
-    jobid=$(jobs % | awk '{print $NF}')
-    name=$(jobs % | awk '{print $4}')
+    name=$(echo "$jobLine" | awk '{print $NF}')
+    jobid=$(echo "$jobLine" | awk '{print $3}')
 
     echo "$jobid $name"
 
@@ -14,5 +15,5 @@ function moveToTmux {
 
     tmux new-session -d -s temp
     tmux send-keys "reptyr $jobid" 'C-m'
-    tmux select-window -t "temp:0"
+    tmux attach
 }

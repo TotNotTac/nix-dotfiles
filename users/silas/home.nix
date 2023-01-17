@@ -19,6 +19,7 @@
     ./modules/services/autokey
     ./modules/fonts
     ./modules/services/syncthing
+    ./modules/haskell/default.nix
     ./packages.nix
   ];
 

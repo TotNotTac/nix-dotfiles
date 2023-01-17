@@ -15,9 +15,7 @@
     distrobox
 
     #programming
-    unstable.haskell-language-server
     unstable.gopls
-    ghcid
     (callPackage ./modules/programs/terminal/whatIsMyIp { })
     alacritty
     cabal-install
@@ -44,7 +42,6 @@
     clojure
     clojure-lsp
     entr
-    unstable.ghc
     glib
     jdk
     jetbrains.datagrip
@@ -59,6 +56,7 @@
     # nodejs-16_x.nodePackages.npm
     yarn
     nodejs-16_x
+    nodePackages.typescript
     nodePackages.typescript-language-server
     postman
     sqlite
@@ -105,6 +103,7 @@
     (callPackage ./modules/programs/launchers/rofi { })
     tldr
     gitflow
+    cz-cli
     pre-commit
     moreutils
 
@@ -125,6 +124,7 @@
     #internet
     brave
     qbittorrent
+    rclone
 
     #communication
     discord

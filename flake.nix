@@ -42,5 +42,13 @@
         };
       };
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      homeConfigurations = {
+        "silas" = home-manager.lib.homeManagerConfiguration {
+          # Note: I am sure this could be done better with flake-utils or something
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+          modules = [ ./users/silas/home.nix ];
+        };
+      };
     };
 }

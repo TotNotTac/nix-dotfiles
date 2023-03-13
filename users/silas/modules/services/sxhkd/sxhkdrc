@@ -34,6 +34,9 @@ super + space; o; h
 super + space; o; t
       $TERMINAL &
 
+super + space; o; n
+      obsidian &
+
 super + i
       emacsclient --eval "(emacs-everywhere)"
 

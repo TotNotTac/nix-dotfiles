@@ -20,8 +20,8 @@
       addpkg = "vim ~/.dotfiles/users/silas/packages.nix && ~/.dotfiles/switch";
       slep = "xinput set-prop 13 'Device Enabled' 0 && systemctl suspend";
       woke = "xinput set-prop 13 'Device Enabled' 1 && exit";
-      ij = "setsid idea-ultimate . >/dev/null 2>&1";
-      ws = "setsid webstorm . >/dev/null 2>&1";
+      ij = "setsid steam-run idea-ultimate >/dev/null 2>&1";
+      ws = "setsid webstorm >/dev/null 2>&1";
       pc = "setsid pycharm-professional >/dev/null 2>&1";
       runPlover = ", xhost + && sudo plover";
       ns = "nix-shell";

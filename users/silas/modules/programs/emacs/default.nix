@@ -2,7 +2,7 @@
 {
   programs.emacs = {
     enable = true;
-    package = (pkgs.emacs.override { nativeComp = true; });
+    package = (pkgs.emacs.override { nativeComp = true; withXwidgets = true; withGTK3 = true; });
     extraPackages = epkgs: [ epkgs.vterm ];
   };
 

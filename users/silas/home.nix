@@ -17,6 +17,7 @@
     ./modules/services/security
     ./modules/services/sxhkd
     ./modules/services/autokey
+    ./modules/services/rclone
     ./modules/fonts
     ./modules/services/syncthing
     ./modules/haskell/default.nix
@@ -30,7 +31,7 @@
   };
 
   home.sessionVariables = {
-    JAVA_HOME = "$HOME/.nix-profile/lib/openjdk";
+    # JAVA_HOME = "$HOME/.nix-profile/lib/openjdk";
     EDITOR = "nvim";
     VISUAL = "nvim";
     BROWSER = "brave";

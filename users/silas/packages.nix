@@ -3,9 +3,7 @@
 {
   home.packages = with pkgs; [
     #Dictionaries
-    aspell
-    aspellDicts.nl
-    aspellDicts.en
+    languagetool
 
     #nix
     comma
@@ -15,12 +13,14 @@
     distrobox
 
     #programming
+    gdb
+    delve
     unstable.gopls
     (callPackage ./modules/programs/terminal/whatIsMyIp { })
     alacritty
-    cabal-install
     idris2
     # cargo
+    pkg-config
     stm32cubemx
     (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
       extensions = [
@@ -31,7 +31,6 @@
       targets = [ "wasm32-unknown-unknown" "thumbv7em-none-eabihf" "thumbv7em-none-eabi" ];
     }))
     arduino
-    gcc-arm-embedded
     probe-run
     libudev-zero
     libusb1
@@ -43,7 +42,7 @@
     clojure-lsp
     entr
     glib
-    jdk
+    # jdk
     jetbrains.datagrip
     jetbrains.goland
     jetbrains.idea-ultimate
@@ -58,6 +57,7 @@
     nodejs-16_x
     nodePackages.typescript
     nodePackages.typescript-language-server
+    nodePackages.vercel
     postman
     sqlite
     stack
@@ -66,6 +66,8 @@
     # vscode
     unstable.vscode
     python3
+    poetry
+    hy
     zlib
     # nodejs-16_x.nodePackages.prettier
     mongodb
@@ -78,11 +80,13 @@
       version = "3.12.4";
       sha256 = "sha256-VyzFq1agobjvei4o/fQ8iMOLySf38DQsLb3C8kCz+78=";
     })
+    gitlab-runner
 
     #utility
     reptyr
     ark
     bat
+    glow
     openvpn
     direnv
     fzf
@@ -106,6 +110,7 @@
     cz-cli
     pre-commit
     moreutils
+    sonar-scanner-cli
 
     #office
     libreoffice
@@ -113,6 +118,10 @@
     zotero #bibliography and refferences
     texlive.combined.scheme-full
     texlab
+    gnuplot
+    obsidian
+    google-drive-ocamlfuse
+    slack
 
     #scripting
     notify-desktop
@@ -120,6 +129,7 @@
     xdotool
     autokey
     xorg.xwininfo
+    mprocs
 
     #internet
     brave
@@ -143,12 +153,14 @@
     zathura
     easyeffects
     vlc
+    #python39Packages.subliminal
     mixxx
+    obs-studio
 
     #gaming
     wine
     lutris
-    prismlauncher
+    unstable.prismlauncher
     sidequest
     nudoku
   ];

@@ -8,7 +8,9 @@
   };
   home.packages = with pkgs; [
     ghcid
-    unstable.ghc
-    unstable.haskell-language-server
+    # ( ghc.withPackages (pkgs: with pkgs; [ xmonad xmonad-contrib ]) )
+    ghc
+    haskell-language-server
+    cabal-install
   ];
 }

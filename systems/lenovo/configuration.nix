@@ -16,6 +16,7 @@
       ./../../modules/programs/virt-manager
       ./../../modules/hardware/logitech
       ./../../modules/audio
+      ../../modules/windowmanagers/xmonad
     ];
 
   # Bootloader.
@@ -88,6 +89,22 @@
 
   programs.steam.enable = true;
   programs.nix-ld.enable = true;
+  programs.java.enable = true;
+
+  # # Can't enable this yet, in the upcoming NixOS release this will make things so much easier. https://blog.thalheim.io/2022/12/31/nix-ld-a-clean-solution-for-issues-with-pre-compiled-executables-on-nixos/
+  # programs.nix-ld.libraries = with pkgs; [
+  #   stdenv.cc.cc
+  #   zlib
+  #   fuse3
+  #   icu
+  #   zlib
+  #   nss
+  #   openssl
+  #   curl
+  #   expat
+  #   # ...
+  # ];
+
   environment.systemPackages = with pkgs; [
     home-manager
     git
@@ -100,6 +117,7 @@
     unrar
     (wine.override { wineBuild = "wine64"; })
     inputs.devenv.packages.x86_64-linux.devenv
+    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science nl ]))
   ];
 
   users = {
@@ -121,8 +139,11 @@
   };
 
   # Enable insults on sudo
-  security.sudo.package = pkgs.sudo.override {
-    withInsults = true;
+  security = {
+    sudo.package = pkgs.sudo.override {
+      withInsults = true;
+    };
+    apparmor.enable = true;
   };
 
   nix.gc = {
